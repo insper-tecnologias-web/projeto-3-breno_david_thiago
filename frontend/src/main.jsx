@@ -8,6 +8,7 @@ import Watchlist from './components/Watchlist/index'
 import axios from 'axios'
 import { createBrowserRouter, RouterProvider, useParams } from 'react-router-dom';
 import Coin from './components/Coin/Coin'
+import { Login } from './components/Login';
 
 
 const CoinWrapper = () => {
@@ -27,6 +28,10 @@ const router = createBrowserRouter(
   {
     path: "watchlist/",
     element: <Watchlist ></Watchlist>,
+  },
+  {
+    path: "/login",
+    element: <Login/>,
   }, 
   {
     path: "coin/:coinKey",
