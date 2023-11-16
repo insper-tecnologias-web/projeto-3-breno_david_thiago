@@ -11,8 +11,12 @@ export function Login() {
     const [user, setUser] = useState("");
     const [senha, setSenha] = useState("");
     const [submitted, setSubmitted] = useState(false)
-    const [id, setId] = useState();
     const navigate = useNavigate();
+    
+      const saveToken = (userToken) => {
+        localStorage.setItem('token', JSON.stringify(userToken));
+      };
+    
 
     const handleInputUser = (event) => {
         setUser(event.target.value);
@@ -33,6 +37,8 @@ export function Login() {
         .post("http://127.0.0.1:8000/api/token/", formData)
         .then((res) => {
             console.log(res.data);
+            saveToken(res.data);
+            navigate('/')
           })
 
     };
