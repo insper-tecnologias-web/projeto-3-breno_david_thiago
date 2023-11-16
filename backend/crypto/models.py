@@ -13,8 +13,22 @@ class Crypto(models.Model):
     key = models.CharField(max_length = 20, primary_key=True, default = "Qwsogvtv82FCd" )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
-        string = "{0}.{1}.{2}".format(self.key,self.name, self.symbol,self.user)
+        string = "{0}.{1}.{3}".format(self.key,self.name, self.symbol,self.user)
         return string
     
+class Post(models.Model):
+    content = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
+        string = "{0}.{1}".format(self.content, self.user)
+        return string
+
+class Comment(models.Model):
+    content = models.TextField()
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
+        string = "{0}.{1}".format(self.content, self.post, self.user)
+        return string
 
 
