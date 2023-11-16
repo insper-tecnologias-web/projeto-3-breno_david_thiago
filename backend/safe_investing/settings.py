@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,14 +25,10 @@ SECRET_KEY = 'django-insecure-fssl^$v29z_81fen1uvl1yfql8%#j3#lge1^+wv8hj=&$(ftc^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['crypto-oracle-backend.onrender.com', 'localhost', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['https://crypto-oracle-backend.onrender.com']
+ALLOWED_HOSTS = []
 
-
-# CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOWED_ORIGINS = [
-    "https://crypto-oracle.vercel.app",
-]
+CORS_ORIGIN_ALLOW_ALL = True
+# Application definition
 
 INSTALLED_APPS = [
     'rest_framework',
@@ -41,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.staticfiles',
     'crypto.apps.CryptoConfig',
     
 ]
@@ -129,4 +127,3 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
