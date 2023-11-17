@@ -18,6 +18,11 @@ const Container = (props) => {
   const [uuidArray, setUuidArray] = useState([]);
   const uuidList = [];
 
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
+
   const getToken = () => {
     const tokenString = localStorage.getItem('token');
     const userToken = JSON.parse(tokenString);
@@ -57,35 +62,41 @@ const Container = (props) => {
 
   const handleClick = (coin) => {
     axios.get("http://127.0.0.1:8000/api/watchlist/", header)
-    .then((res) => {
-      setWatch(res.data);
-      res.data.map((coin) => {
-        uuidList.push(coin.key)
-        setUuidArray(uuidList);
+      .then((res) => {
+        setWatch(res.data);
+        res.data.map((coin) => {
+          uuidList.push(coin.key)
+          setUuidArray(uuidList);
+        });
+  
+        const data = {
+          "name": coin.name,
+          "symbol": coin.symbol,
+          "price": coin.price,
+          "iconUrl": coin.iconUrl,
+          "rank": coin.rank,
+          "key": coin.uuid,
+          "change": coin.change,
+          "marketCap": coin.marketCap,
+          "volume": coin['24hVolume']
+        };
+  
+        // Make the API request to update the watchlist
+        axios.post(`http://127.0.0.1:8000/api/watchlist/${coin.uuid}/`, data, header)
+          .then(() => {
+            // After the request is successful, update the watchlist and uuidArray
+            setWatch([...watch, data]);
+            setUuidArray([...uuidArray, data.key]);
+          })
       })
-    });
-    
-    
-    const data = {
-      "name": coin.name,
-      "symbol": coin.symbol,
-      "price": coin.price,
-      "iconUrl": coin.iconUrl,
-      "rank": coin.rank,
-      "key": coin.uuid,
-      "change": coin.change,
-      "marketCap": coin.marketCap,
-      "volume": coin['24hVolume']
-    };
-
-    // Make the API request to update the watchlist
-    axios.post(`http://127.0.0.1:8000/api/watchlist/${coin.uuid}/`, data, header)
-      .then(() => {
-        // After the request is successful, update the watchlist and uuidArray
-        setWatch([...watch, data]);
-        setUuidArray([...uuidArray, data.key]);
+      .catch((error) => {
+        if (error.response && error.response.status === 401) {
+          handleShow();
+        } else {
+          console.error('Ocorreu um erro na primeira requisição:', error);
+        }
       });
-  }
+  };
 
   const getVolume = (coin) => {
     // Check if the "volume" property exists, if not, use "24hVolume"
@@ -110,6 +121,31 @@ const Container = (props) => {
   
   return (
     <div className='max-w-screen-3xl min-w-screen-sm flex justify-center grow overflow-x-scroll'>
+      {showModal && (
+        <div className="backdrop-blur fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none"
+        onClick={() => setShowModal(false)}>
+          <div className="relative w-auto max-w-lg mx-auto my-6">
+            <div className="bg-white border-0 rounded-lg shadow-lg relative flex flex-col w-full outline-none focus:outline-none"  
+            onClick={(e) => e.stopPropagation()}>
+              <div className="flex h-auto items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                <h3 className="text-3xl mx-4 font-semibold">
+                  Você deve estar logado
+                </h3>
+                <button
+                  className="absolute top-1 right-2 ml-auto bg-transparent border-0 text-black opacity-40 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                  onClick={() => setShowModal(false)}
+                >
+                  ×
+                </button>
+              </div>
+              <div className="relative p-6 flex-auto">
+                <p>Faça login para continuar.</p>
+                <a href="/login" className="text-blue-500">Fazer Login</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <Table>
         <TableHeader>
           <TableRow>

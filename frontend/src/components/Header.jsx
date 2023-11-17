@@ -1,5 +1,7 @@
-import {Currency, Star, ShieldHalf, Aperture} from 'lucide-react';
+import {Star, LogOut, Aperture} from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { DropdownMenuDemo } from './Options/options';
+import { AvatarDemo } from './Options/avatar';
 
 const Header = (props) => {
     const logOut = () => {
@@ -21,15 +23,7 @@ const Header = (props) => {
                     <button className = "text-lg md:text-2xl font-medium">Cryptocurrency</button>
                 </Link>
             </div>
-            <div className = "flex flex-col">
-                <Link to = {'watchlist/'}>
-                        <div className = 'flex flex-row items-center'>
-                            <Star></Star>
-                            <button className = ' text-lg md:text-2xl font-medium px-2.5'>Watchlist</button>
-                        </div>
-                </Link>
-                <button onClick = {() => logOut()} className = 'text-lg md:text-2xl font-medium px-2.5'>Logout</button>
-            </div>
+            < DropdownMenuDemo logOut = {logOut}/>
         </div>
         <div className="border-b border-stone-300 w-full"></div>
         </div>
