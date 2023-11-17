@@ -9,10 +9,26 @@ import { useEffect } from "react";
 
 const Watchlist = (props) => {
     const [watchlist, setWatchlist] = useState([]);
+    const getToken = () => {
+        const tokenString = localStorage.getItem('token');
+        const userToken = JSON.parse(tokenString);
+        return userToken?.token
+      };
+    
+      const [token, setToken] = useState(getToken());
+    
+      function get_header(){
+        const options = {
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization' : `Token ${token}`}
+        };
+        return options
+    }
+    
+    const header = get_header()
 
     const getWatchlist = async () => {
         try {
-            const res = await axios.get("http://127.0.0.1:8000/api/watchlist/");
+            const res = await axios.get("http://127.0.0.1:8000/api/watchlist/",header);
             setWatchlist(res.data);
         } catch (error) {
             console.error("Error fetching watchlist:", error);

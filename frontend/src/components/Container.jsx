@@ -17,10 +17,27 @@ const Container = (props) => {
   const [watch, setWatch] = useState([]);
   const [uuidArray, setUuidArray] = useState([]);
   const uuidList = [];
+
+  const getToken = () => {
+    const tokenString = localStorage.getItem('token');
+    const userToken = JSON.parse(tokenString);
+    return userToken?.token
+  };
+
+  const [token, setToken] = useState(getToken());
+
+  function get_header(){
+    const options = {
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization' : `Token ${token}`}
+    };
+    return options
+}
+
+  const header = get_header()
  
   // Fetch watchlist data and update uuidArray when the component mounts
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/api/watchlist/")
+    axios.get("http://127.0.0.1:8000/api/watchlist/", header)
       .then((res) => {
         setWatch(res.data);
         res.data.map((coin) => {
@@ -39,7 +56,7 @@ const Container = (props) => {
     
 
   const handleClick = (coin) => {
-    axios.get("http://127.0.0.1:8000/api/watchlist/")
+    axios.get("http://127.0.0.1:8000/api/watchlist/", header)
     .then((res) => {
       setWatch(res.data);
       res.data.map((coin) => {
@@ -62,7 +79,7 @@ const Container = (props) => {
     };
 
     // Make the API request to update the watchlist
-    axios.post(`http://127.0.0.1:8000/api/watchlist/${coin.uuid}/`, data)
+    axios.post(`http://127.0.0.1:8000/api/watchlist/${coin.uuid}/`, data, header)
       .then(() => {
         // After the request is successful, update the watchlist and uuidArray
         setWatch([...watch, data]);
