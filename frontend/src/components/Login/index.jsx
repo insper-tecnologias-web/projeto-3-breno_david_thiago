@@ -33,13 +33,21 @@ export function Login() {
           "username" : user,
           "password" : senha,
         }
+
         axios
-        .post("http://127.0.0.1:8000/api/token/", formData)
-        .then((res) => {
-            console.log(res.data);
-            saveToken(res.data);
-            navigate('/')
-          })
+          .post("http://127.0.0.1:8000/api/token/", formData)
+          .then((res) => {
+              console.log(res.data);
+              saveToken(res.data);
+              navigate('/')
+            }).catch((error) => {
+              if (error.response && error.response.status === 403) {
+                console.log('Usuário ou senha incorretos.');
+              } else {
+                console.error('Ocorreu um erro:', error);
+              }
+            });
+        
 
     };
 
