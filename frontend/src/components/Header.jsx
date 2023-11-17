@@ -1,6 +1,7 @@
 import {Star, LogOut, Aperture} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { DropdownMenuDemo } from './Options/options';
+import { AvatarDemo } from './Options/avatar';
 
 const Header = (props) => {
     const logOut = () => {
