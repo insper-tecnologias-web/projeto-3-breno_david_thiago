@@ -22,6 +22,9 @@ const Header = (props) => {
                 <Link className='self-center' to = {'/'}>
                     <button className = "text-lg md:text-2xl font-medium">Cryptocurrency</button>
                 </Link>
+                <Link className='self-center' to = {'/community'}>
+                    <button className = "text-lg md:text-2xl ml-11 font-medium">Community</button>
+                </Link>
             </div>
             < DropdownMenuDemo logOut = {logOut}/>
         </div>
