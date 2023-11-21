@@ -15,7 +15,6 @@ export function Login() {
     
       const saveToken = (userToken) => {
         localStorage.setItem('token', JSON.stringify(userToken));
-        localStorage.setItem('logged', true.toString());
       };
     
 
@@ -90,7 +89,7 @@ export function Login() {
                       Password
                     </label>
                     <div className="text-sm">
-                      <a href="#" className="font-semibold text-green-700 hover:text-green-600">
+                      <a href="#" className="font-semibold text-blue-500 hover:text-blue-500">
                         Forgot password?
                       </a>
                     </div>
@@ -111,7 +110,7 @@ export function Login() {
                 <div>
                   <button
                     type="submit"
-                    className="flex w-full justify-center mb-4 rounded-md bg-green-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600"
+                    className="flex w-full justify-center mb-4 rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500"
                   >
                     Sign in
                   </button>
@@ -120,9 +119,9 @@ export function Login() {
                 {/* {submitted ? (loginStats ? (navigate(`/logged/${id}`)) : (<AlertDestructive> Usuário ou Senha incorreto. Por favor, tente novamente. </AlertDestructive>)) : (null)} */}
               <p className="mt-10 text-center text-sm text-gray-500">
                 Not a member?{' '}
-                {/* <Link to = "/register" className="font-semibold leading-6 text-green-700 hover:text-green-600">
+                <Link to = "/register" className="font-semibold leading-6 text-blue-500 hover:text-blue-500">
                   Register
-                </Link> */}
+                </Link>
               </p>
             </div>
           </div>

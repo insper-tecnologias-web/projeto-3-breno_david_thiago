@@ -9,6 +9,7 @@ import axios from 'axios'
 import { createBrowserRouter, RouterProvider, useParams } from 'react-router-dom';
 import Coin from './components/Coin/Coin'
 import { Login } from './components/Login';
+import { Register } from './components/login/register';
 
 
 const CoinWrapper = () => {
@@ -32,6 +33,10 @@ const router = createBrowserRouter(
   {
     path: "/login",
     element: <Login/>,
+  }, 
+  {
+    path: "/register",
+    element: <Register/>,
   }, 
   {
     path: "coin/:coinKey",
