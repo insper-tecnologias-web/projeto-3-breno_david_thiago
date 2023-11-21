@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from django.http import Http404, HttpResponseForbidden, JsonResponse, HttpResponse
 from .models import Crypto, Post, Comment
 from rest_framework.exceptions import APIException
-from .serializers import CryptoSerializer, PostSerializer, CommentSerializer
+from .serializers import CryptoSerializer, PostSerializer, CommentSerializer, UserSerializer
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import authenticate
@@ -27,7 +27,7 @@ def api_get_token(request):
     except:
         return HttpResponseForbidden()
 
-@api_view(['POST'])
+@api_view(['GET','POST'])
 def api_user(request):
     if request.method == 'POST':
         username = request.data['username']
@@ -37,12 +37,17 @@ def api_user(request):
         user = User.objects.create_user(username, email, password)
         user.save()
         return Response(status=204)
+    users = User.objects.all()
+    serialized_user = UserSerializer(users, many = True)
+    return Response(serialized_user.data)
+
     
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def api_crypto(request, uuid):
     try:
-        crypto = Crypto.objects.get(key=uuid)
+        crypto = Crypto.objects.get(key=uuid, user=request.user)
+        print(crypto)
     except Crypto.DoesNotExist:
         crypto = None  # Set crypto to None if it doesn't exist
 

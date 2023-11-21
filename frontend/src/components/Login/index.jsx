@@ -15,6 +15,7 @@ export function Login() {
     
       const saveToken = (userToken) => {
         localStorage.setItem('token', JSON.stringify(userToken));
+        localStorage.setItem('logged', true.toString());
       };
     
 

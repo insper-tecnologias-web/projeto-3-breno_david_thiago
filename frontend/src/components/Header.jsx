@@ -1,13 +1,21 @@
 import {Star, LogOut, Aperture} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { DropdownMenuDemo } from './Options/options';
-import { AvatarDemo } from './Options/avatar';
+import { useNavigate } from 'react-router-dom';
 
 const Header = (props) => {
+    const navigate = useNavigate();
+
     const logOut = () => {
         localStorage.setItem('token', JSON.stringify(""));
+        localStorage.setItem('logged', false.toString());
         window.location.reload();
     }
+
+    const logIn = () => {
+        navigate('login')
+    }
+
     return(
         <div className = 'flex flex-col'>
         
@@ -23,7 +31,7 @@ const Header = (props) => {
                     <button className = "text-lg md:text-2xl font-medium">Cryptocurrency</button>
                 </Link>
             </div>
-            < DropdownMenuDemo logOut = {logOut}/>
+        < DropdownMenuDemo logOut = {logOut} logIn = {logIn}/>
         </div>
         <div className="border-b border-stone-300 w-full"></div>
         </div>
