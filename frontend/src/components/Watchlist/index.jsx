@@ -37,7 +37,7 @@ const Watchlist = (props) => {
 
     useEffect(() => {
         getWatchlist();
-    }); // Empty dependency array to run the effect only once on mount
+    },[]); // Empty dependency array to run the effect only once on mount
 
     return (
         <div className='bg-white h-full w-max-screen-3xl w-min-screen-sm'>
