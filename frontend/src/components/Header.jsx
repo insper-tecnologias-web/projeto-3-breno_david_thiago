@@ -1,10 +1,46 @@
 import {Star, LogOut, Aperture} from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { DropdownMenuDemo } from './Options/options';
+import { Options } from './Options/options';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 const Header = (props) => {
     const navigate = useNavigate();
+
+    const getToken = () => {
+        const tokenString = localStorage.getItem('token');
+        const userToken = JSON.parse(tokenString);
+        return userToken?.token
+      };
+    
+    const [token, setToken] = useState(getToken());
+    
+    function get_header(){
+        const options = {
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization' : `Token ${token}`}
+        };
+        return options
+    }
+    
+    const header = get_header()
+
+    const isLogged = localStorage.getItem('logged');
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
+
+    if (isLogged !== null) {
+      if (isLogged){
+        useEffect(() => {
+            axios.get("http://127.0.0.1:8000/api/user/info/", header)
+              .then((res) => {
+                setUsername(res.data['username']);
+                console.log(res.data['username']);
+                setEmail(res.data['email']);
+                console.log(res.data['email']);
+              })},[]);
+      }
+    }
 
     const logOut = () => {
         localStorage.setItem('token', JSON.stringify(""));
@@ -34,11 +70,17 @@ const Header = (props) => {
                     <button className = "text-lg md:text-2xl ml-11 font-medium">Community</button>
                 </Link>
             </div>
-        < DropdownMenuDemo logOut = {logOut} logIn = {logIn}/>
+        <div className='flex flex-row '>
+            <Options logOut = {logOut} logIn = {logIn}/>
+            <div className='flex flex-col justify-center'>
+                <h1>{username}</h1>
+                <p className='text-gray-600'>{email}</p>
+            </div>
+        </div>
         </div>
         <div className="border-b border-stone-300 w-full"></div>
         </div>
     )
 }
 
-export default Header;
+export default Header; 

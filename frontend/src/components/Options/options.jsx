@@ -33,7 +33,7 @@ import {
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
   
-  export function DropdownMenuDemo(props) {
+  export function Options(props) {
 
     let logado = false
     const isLogged = localStorage.getItem('logged');
