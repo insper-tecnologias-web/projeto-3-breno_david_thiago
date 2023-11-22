@@ -41,6 +41,17 @@ def api_user(request):
     serialized_user = UserSerializer(users, many = True)
     return Response(serialized_user.data)
 
+
+@api_view(['GET','POST'])
+@permission_classes([IsAuthenticated])
+def api_user_info(request):
+    if request.method == 'POST':
+        return Response(status=204)
+    
+    user_info = User.objects.get(username=request.user)
+    serialized_user = UserSerializer(user_info)
+    print(serialized_user.data)
+    return Response(serialized_user.data)
     
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
