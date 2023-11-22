@@ -17,10 +17,10 @@ const Header = (props) => {
     }
 
     return(
-        <div className = 'flex flex-col'>
+        <div className = 'flex flex-col flex-wrap'>
         
         <div className = 'flex flex-row grow items-center px-4 justify-between  bg-gradient-to-l from-blue-500 h-36 divide-stone-800 flex-wrap'>
-            <div className='flex flex-row justify-between items-center '>
+            <div className='flex flex-row justify-between items-center flex-wrap '>
                 <Link to = {'/'}>
                 <div className = 'flex flex-row justify-between items-center mr-14 self-center'>
                     <Aperture className = 'self-center'></Aperture>
@@ -29,6 +29,9 @@ const Header = (props) => {
                 </Link>
                 <Link className='self-center' to = {'/'}>
                     <button className = "text-lg md:text-2xl font-medium">Cryptocurrency</button>
+                </Link>
+                <Link className='self-center' to = {'/community'}>
+                    <button className = "text-lg md:text-2xl ml-11 font-medium">Community</button>
                 </Link>
             </div>
         < DropdownMenuDemo logOut = {logOut} logIn = {logIn}/>
