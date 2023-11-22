@@ -11,10 +11,6 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
-<<<<<<< HEAD
-=======
-    "@fortawesome/free-brands-svg-icons": "^6.4.2",
->>>>>>> 3b62802ba8a05eb68da68b1148d692704947f6a3
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@radix-ui/react-avatar": "^1.0.4",
@@ -29,13 +25,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
     "react-hook-form": "^7.48.2",
-=======
-    "react-fontawesome": "^1.7.1",
-    "react-hook-form": "^7.48.2",
-    "react-international-phone": "^4.0.4",
->>>>>>> 3b62802ba8a05eb68da68b1148d692704947f6a3
     "react-router-dom": "^6.18.0",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7"
