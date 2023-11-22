@@ -10,11 +10,15 @@ class Crypto(models.Model):
     rank = models.SmallIntegerField(default=0)
     change = models.FloatField(default = 0.0)
     iconUrl = models.CharField(max_length = 200, default = "")
-    key = models.CharField(max_length = 20, primary_key=True, default = "Qwsogvtv82FCd" )
+    key = models.CharField(max_length = 20, default = "Qwsogvtv82FCd" )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         string = "{0}.{1}.{3}".format(self.key,self.name, self.symbol,self.user)
         return string
+    
+class Usuario(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    manyCrypto = models.ManyToManyField(Crypto)
     
 class Post(models.Model):
     content = models.TextField()

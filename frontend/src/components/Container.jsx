@@ -49,9 +49,7 @@ const Container = (props) => {
           uuidList.push(coin.key)
           setUuidArray(uuidList);
         })
-      });
-
-    }); 
+      })}); 
   
   
   const handleStar = (uuid) => {

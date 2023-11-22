@@ -9,7 +9,10 @@ import axios from 'axios'
 import { createBrowserRouter, RouterProvider, useParams } from 'react-router-dom';
 import Coin from './components/Coin/Coin'
 import { Login } from './components/Login';
-import Community from './components/Community/Community';
+
+import Community from './components/Community/Commu=
+import { Register } from './components/login/register';
+
 
 
 const CoinWrapper = () => {
@@ -33,6 +36,10 @@ const router = createBrowserRouter(
   {
     path: "/login",
     element: <Login/>,
+  }, 
+  {
+    path: "/register",
+    element: <Register/>,
   }, 
   {
     path: "coin/:coinKey",

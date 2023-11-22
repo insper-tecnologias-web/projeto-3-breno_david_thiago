@@ -8,5 +8,7 @@
 - [ ] criar pagina de signup
 - [ ] implementar hero
 - [ ] criar timeline
+- [ ] criar funcionalidades de fazer posts
+- [ ] mudar as informações do usuário
 - [ ] eivid
 ```
