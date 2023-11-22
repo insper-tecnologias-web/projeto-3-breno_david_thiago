@@ -1,14 +1,14 @@
 import { AvatarDemo } from '../Options/avatar';
 const Posts = (props) => {
     return(
-        <div className = ' flex flex-row justify-start grow ml-7 mt-10 mr-4 mx-0.5 md:mx-36 min-w-fit max-w-screen-md rounded-xl border border-solid border-blue-500 p-2.5 md:px-64 py-11 border-2'>
-                <AvatarDemo></AvatarDemo>
-                <div className = 'flex flex-col'>
-                    <div className = 'flex flex-row items-center'>
-                        <h1 className='mr-2.5 text-black font-bold text-lg md:text-2xl'>{props.user.username}</h1>
-                        <h1 className='text-gray-500 font-md text-md md:text-xl'l>@{props.user.username}</h1>
+        <div className = ' flex flex-row justify-start grow mt-10 py-4 md:py-11 px-2.5 md:px-7 min-w-full max-w-screen-md rounded-xl border border-solid border-blue-300  border-1'>
+                <AvatarDemo className = "min-h-full mr-11"></AvatarDemo>
+                <div className = 'flex flex-col ml-2.5 md:ml-4'>
+                    <div className = 'flex flex-row items-center mb-4'>
+                        <h1 className='mr-2.5 text-black font-bold text-xl md:text-3xl'>{props.user.username}</h1>
+                        <h1 className='text-gray-500 font-md text-lg md:text-2xl'l>@{props.user.username}</h1>
                     </div>
-                    <p>{props.content}</p>
+                    <p className = 'text-black font-md text-lg md:text-2xl'>{props.content}</p>
                 </div>
         </div>
     )

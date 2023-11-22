@@ -26,7 +26,7 @@ const Community = () => {
         try {
             const res = await axios.get("http://127.0.0.1:8000/api/posts/",header);
             setPosts(res.data);
-            console.log(posts)
+            
         } catch (error) {
             console.error("Error fetching posts:", error);
         }
@@ -37,7 +37,8 @@ const Community = () => {
     return(
         <div>
             <Header></Header>
-            <Timeline posts = {posts}></Timeline>
+            
+            <Timeline posts = {posts} header = {header}></Timeline>
         </div>
         
     )
