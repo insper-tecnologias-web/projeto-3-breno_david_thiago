@@ -18,7 +18,6 @@ import {
 
   import { Link } from 'react-router-dom';
   import { AvatarDemo } from "./avatar";
-  import { Button } from "@/components/ui/button"
   import {
     DropdownMenu,
     DropdownMenuContent,
@@ -35,14 +34,23 @@ import {
   } from "@/components/ui/dropdown-menu"
   
   export function DropdownMenuDemo(props) {
+
+    let logado = false
+    const isLogged = localStorage.getItem('logged');
+    if (isLogged !== null) {
+      logado = (isLogged === 'true'); 
+    } else {
+      localStorage.setItem('logged', false.toString());
+    }
+
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button>
+          <button className="mr-4 rounded-full focus:outline-none">
             <AvatarDemo/>
           </button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56">
+          {logado ? (<DropdownMenuContent className="w-56">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
@@ -63,9 +71,18 @@ import {
           <DropdownMenuItem>
             <LogOut className="mr-2 h-4 w-4" />
             <span onClick={() => props.logOut()}>Log out</span>
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+            <DropdownMenuShortcut onClick={() => props.logOut()}>⇧⌘Q</DropdownMenuShortcut>
           </DropdownMenuItem>
-        </DropdownMenuContent>
+        </DropdownMenuContent>) 
+                                : (<DropdownMenuContent className="w-56">
+                                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                                    <DropdownMenuSeparator />
+                                    <DropdownMenuItem>
+                                      <LogOut className="mr-2 h-4 w-4" />
+                                      <span onClick={() => props.logIn()}>Log In</span>
+                                      <DropdownMenuShortcut onClick={() => props.logIn()}>⇧⌘Q</DropdownMenuShortcut>
+                                    </DropdownMenuItem>
+                                  </DropdownMenuContent>)}
       </DropdownMenu>
     )
   }
