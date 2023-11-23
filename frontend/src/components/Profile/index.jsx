@@ -10,7 +10,7 @@ import Sidebar from './Sidebar';
 export function Profile() {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
-    const [posts, setPosts] = useState([]);
+    const [content, setContent] = useState(null);
     const getToken = () => {
         const tokenString = localStorage.getItem('token');
         const userToken = JSON.parse(tokenString);
@@ -38,14 +38,25 @@ export function Profile() {
     const getPosts = () =>{ 
             axios.get("http://127.0.0.1:8000/api/posts/user/",header)
             .then((res)=>{
-                setPosts(res.data);
+                console.log(res.data.length)
+                if(res.data.length===0){
+                    setContent(<p className='flex font-bold mt-48 text-2xl items-center justify-center'>Você ainda não possui nenhum post :(</p>)
+                }else{const postContent = ((res.data)
+                .slice()
+                .reverse()
+                .map((post, index) => (
+                <PostsProfile
+                    key={index} // Unique key based on the reversed index
+                    user={post.user}
+                    content={post.content}
+                ></PostsProfile>)
+                ))
+                    setContent(postContent)}
             })
     }
-
     useEffect(() => {
         getPosts();
-    }); // Empty dependency array to run the effect only once on mount
-    
+    },[]); // Empty dependency array to run the effect only once on mount
 
       return (
         <div className='flex flex-row h-screen'>
@@ -54,7 +65,7 @@ export function Profile() {
             </div>
             <div className='flex-1 mr-8 border-2 border-b-0 border-black overflow-y-auto'>
                 <div className='flex flex-col-reverse bg-cover h-64 ' style={{ backgroundImage: `url(${bannerImage})`}}>
-                    <AvatarDemo tamanho = "flex justify-center items-center rounded-full h-36 w-36 ml-16 border-2 border-black "></AvatarDemo>
+                    <AvatarDemo tamanho = "flex justify-center items-center rounded-full h-36 w-36 ml-16 border-2 border-white "></AvatarDemo>
                 </div>
                 <div className='py-4 border-black border-b-2'>
                     <p className='mx-16 font-bold text-3xl'>{username}</p>
@@ -62,16 +73,7 @@ export function Profile() {
                 </div>
                 <div>
                     <div className='px-4 pb-4'>
-                        {posts
-                        .slice()
-                        .reverse()
-                        .map((post, index) => (
-                        <PostsProfile
-                            key={index} // Unique key based on the reversed index
-                            user={post.user}
-                            content={post.content}
-                        ></PostsProfile>
-                        ))}
+                        {content}
                     </div>
                 </div>
             </div>
