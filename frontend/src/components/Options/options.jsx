@@ -1,18 +1,6 @@
 import {
-    Cloud,
-    CreditCard,
-    Github,
-    Keyboard,
-    LifeBuoy,
     LogOut,
-    Mail,
-    MessageSquare,
-    Plus,
-    PlusCircle,
-    Settings,
     User,
-    UserPlus,
-    Users,
     Star,
   } from "lucide-react"
 
@@ -47,19 +35,21 @@ import {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button className="mr-4 rounded-full focus:outline-none">
-            <AvatarDemo/>
+            <AvatarDemo tamanho = "h-16 w-16"></AvatarDemo>
           </button>
         </DropdownMenuTrigger>
           {logado ? (<DropdownMenuContent className="w-56">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
+            <Link to = {'/profile/'}>
             <DropdownMenuItem>
               <User className="mr-2 h-4 w-4" />
               <span>Profile</span>
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <Link to = {'watchlist/'}>
+            </Link>
+            <Link to = {'/watchlist/'}>
             <DropdownMenuItem>
                 <Star className="mr-2 h-4 w-4" />
                 <span>Watchlist</span>

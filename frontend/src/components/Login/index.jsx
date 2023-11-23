@@ -115,7 +115,6 @@ export function Login() {
                   </button>
                 </div>
               </form>
-                {/* {submitted ? (loginStats ? (navigate(`/logged/${id}`)) : (<AlertDestructive> Usuário ou Senha incorreto. Por favor, tente novamente. </AlertDestructive>)) : (null)} */}
               <p className="mt-10 text-center text-sm text-gray-500">
                 Not a member?{' '}
                 <Link to = "/register" className="font-semibold leading-6 text-blue-500 hover:text-blue-500">

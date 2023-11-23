@@ -9,7 +9,7 @@ import axios from 'axios'
 import { createBrowserRouter, RouterProvider, useParams } from 'react-router-dom';
 import Coin from './components/Coin/Coin'
 import { Login } from './components/Login';
-
+import { Profile } from './components/Profile';
 import Community from './components/Community/Community';
 import { Register } from './components/login/register';
 
@@ -48,7 +48,11 @@ const router = createBrowserRouter(
   {
     path: "/community",
     element: <Community></Community>
-  }
+  },
+  {
+    path: "/profile",
+    element: <Profile></Profile>
+  },
   
 ]);
 

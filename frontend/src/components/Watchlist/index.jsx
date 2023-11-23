@@ -3,7 +3,6 @@ import ContainerWatch from "./ContainerWatch";
 import { useState } from "react";
 import axios from "axios";
 import Header from "../Header";
-import HeaderWatch from "./HeaderWatch";
 import { useEffect } from "react";
 
 
@@ -41,7 +40,7 @@ const Watchlist = (props) => {
 
     return (
         <div className='bg-white h-full w-max-screen-3xl w-min-screen-sm'>
-            <HeaderWatch />
+            <Header/>
             <h1 className='ml-7 mt-20 mb-10 mr-4 font-mono font-black text-xl md:text-4xl mx-0.5 md:mx-36'>Your Crypto Watchlist</h1>
             <ContainerWatch coins={watchlist}></ContainerWatch>
         </div>
