@@ -11,27 +11,27 @@ import { ButtonLoading } from "@/components/Button/loading";
 import { useToast } from "@/components/ui/use-toast"
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
 import { AlertDestructive } from '@/components/Error/error';
 library.add(faChevronDown, faChevronUp);
 
 
 export function Register() { 
 
+  const navigate = useNavigate();
   const { toast } = useToast()
   const params = useParams();
   const userId = params.userId;
 
   const [name,setName] = useState("");
   const [erroNome,setErroNome] = useState(false);
+  const [erroUsername, setErroUsername] = useState(false);
   const [email,setEmail] = useState("");
   const [erroEmail,setErroEmail] = useState(false);
   const [password,setPassword] = useState("");
   const [passwordAgain,setPasswordAgain] = useState("");
   const [salvo, setSalvo] = useState(false);
-  const [errorGeral, setErrorGeral] = useState(false);
   const [erroSenhas, setErroSenhas] = useState(false); 
-  const {register, setValue, setFocus} = useForm();
 
 
   const nameChange = (event) =>{
@@ -89,50 +89,38 @@ export function Register() {
       "email" : email,
     }
 
-    if(erroNome==true || erroEmail==true){
+    if(erroNome || erroEmail || erroSenhas){
       console.log("erro ok")
+      setSalvo(true);
       setTimeout(() => {
+        setSalvo(false);
         toast({
-          variant: "red",
+          variant: "destructive",
           title: "Erro",
-          description: "Resolva os erros antes de salvar",
+          description: "Resolva os erros antes de salvar.",
         });
       }, 2000);
     }else{
-      let erro = false;
       axios
     .post(`http://127.0.0.1:8000/api/users/`, formData)
     .then((res) => {
         setSalvo(true);
         setTimeout(() => {
-          setSalvo(false); // Desativa o botão de carregamento
+          setSalvo(false); 
           toast({
-            variant: 'destructive',
+            variant: 'success',
             title: "Sucesso",
-            description: "Suas informações foram salvas com sucesso",
+            description: "Suas informações foram salvas com sucesso.",
           });
+          navigate('/login');
         }, 2000);
       })
       .catch((error) => {
         if (error.response.status == 500) {
-          console.log(error)
-          console.log("erro username")
-          erro = true
-          console.log(erro)
+          setErroUsername(true);
         }
-      })
-      .then((res) => {
-        if (erro !== true){
-            window.location.href = "/login"
-          }
-      })
-      
-      
-    };
-
-    
-
-    
+      })    
+    }; 
   };
 
   return (
@@ -162,6 +150,7 @@ export function Register() {
 
               <div className="mt-2 sm:col-span-6">
                 {erroNome ? <AlertDestructive>Seu username precisa ter pelomenos 3 letras ou números.</AlertDestructive> : null}
+                {erroUsername ? <AlertDestructive>Username já em uso, por favor utilize um nome único.</AlertDestructive> : null}
             </div>
             </div>
 
@@ -222,15 +211,9 @@ export function Register() {
                 {erroSenhas ? <AlertDestructive> As senhas não coincidem.</AlertDestructive> : null}
             </div>
           </div>
-          {salvo ? <ButtonLoading/> : <ButtonDemo type = "submit" variante = "blue" input = "Salvar" disabled={errorGeral}/>}
+          {salvo ? <ButtonLoading/> : <ButtonDemo type = "submit" variante = "blue" input = "Salvar"/>}
         </form>
-        <p className="text-center text-sm text-gray-500">
-          <Link to = "/login" className="font-semibold leading-6 text-blue-500 hover:text-blue-500">
-            Return to login
-          </Link>
-        </p>
-  
-        
+
     </div>
   )
 }

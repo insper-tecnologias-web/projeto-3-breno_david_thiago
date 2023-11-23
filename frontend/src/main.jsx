@@ -9,9 +9,10 @@ import axios from 'axios'
 import { createBrowserRouter, RouterProvider, useParams } from 'react-router-dom';
 import Coin from './components/Coin/Coin'
 import { Login } from './components/Login';
-
+import { Profile } from './components/Profile';
 import Community from './components/Community/Community';
 import { Register } from './components/login/register';
+import { Toaster } from './components/ui/toaster';
 
 
 
@@ -48,7 +49,11 @@ const router = createBrowserRouter(
   {
     path: "/community",
     element: <Community></Community>
-  }
+  },
+  {
+    path: "/profile",
+    element: <Profile></Profile>
+  },
   
 ]);
 
@@ -58,5 +63,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <Toaster />
   </React.StrictMode>
 );
