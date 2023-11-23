@@ -115,6 +115,13 @@ const Container = (props) => {
     }
     
   };
+  const upOrDown = (change) => {
+    if (change>=0) {
+      return true;
+    } else{
+      return false;
+    }
+  }
 
   
   return (
@@ -176,7 +183,7 @@ const Container = (props) => {
                 </Link>
               </TableCell>
               <TableCell className="text-black font-semibold text-md md:text-xl self-center">{parseFloat(coin.price).toFixed(4)}</TableCell>
-              <TableCell className="text-black font-semibold text-md md:text-xl self-center">{parseFloat(coin.change).toFixed(2)}</TableCell>
+              <TableCell className={`text-black font-semibold text-md md:text-xl self-center ${upOrDown(coin.change)? 'text-green-500': 'text-red-500'}`}>{parseFloat(coin.change).toFixed(2)}</TableCell>
               <TableCell className="text-black font-semibold text-md md:text-xl self-center">{parseFloat(coin.marketCap).toFixed(2)}</TableCell>
               <TableCell className="text-black font-semibold text-md md:text-xl self-center">{parseFloat(getVolume(coin)).toFixed(2)}</TableCell>
             </TableRow>

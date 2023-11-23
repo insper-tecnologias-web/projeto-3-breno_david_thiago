@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
+
 import {
   Table,
   TableBody,
@@ -33,7 +34,13 @@ const ContainerWatch = (props) => {
     }
     
   };
-
+  const upOrDown = (change) => {
+    if (change>=0) {
+      return true;
+    } else{
+      return false;
+    }
+  }
   
   return (
     <div className='max-w-screen-3xl min-w-screen-sm flex justify-center grow overflow-x-scroll mx-0.5 md:mx-20 '>
@@ -64,7 +71,7 @@ const ContainerWatch = (props) => {
                 <div className="font-medium text-gray-500 text-md md:text-xl">{coin.symbol}</div>
               </TableCell>
               <TableCell className="text-black font-semibold text-md md:text-xl self-center">{parseFloat(coin.price).toFixed(4)}</TableCell>
-              <TableCell className="text-black font-semibold text-md md:text-xl self-center">{parseFloat(coin.change).toFixed(2)}</TableCell>
+              <TableCell className={`text-black font-semibold text-md md:text-xl self-center ${upOrDown(coin.change)? 'text-green-500': 'text-red-500'}`}>{parseFloat(coin.change).toFixed(2)}</TableCell>
               <TableCell className="text-black font-semibold text-md md:text-xl self-center">{parseFloat(coin.marketCap).toFixed(2)}</TableCell>
               <TableCell className="text-black font-semibold text-md md:text-xl self-center">{parseFloat(getVolume(coin)).toFixed(2)}</TableCell>
             </TableRow>
