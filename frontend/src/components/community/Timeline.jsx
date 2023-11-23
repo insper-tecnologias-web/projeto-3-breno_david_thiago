@@ -5,27 +5,13 @@ import axios from "axios"
 import { useState } from "react";
 
 
+
 const Timeline = (props) => {
   const posts = props.posts;
   const [content,setContent] = useState('');
-  
+  const header = props.header;
 
-  const getToken = () => {
-    const tokenString = localStorage.getItem('token');
-    const userToken = JSON.parse(tokenString);
-    return userToken?.token
-  };
-
-  const [token, setToken] = useState(getToken());
-
-  function get_header(){
-    const options = {
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization' : `Token ${token}`}
-    };
-    return options
-}
-
-const header = get_header()
+ 
 
   const handleSubmit = async(event) => {
     event.preventDefault();
@@ -70,6 +56,7 @@ const header = get_header()
         >
           <p className = "self-center">Post</p>
         </button>
+        
       </form>
       <h1 className='ml-7 self-center mt-20 md:mt-32 mb-10 mr-4 font-mono font-black text-xl md:text-4xl'>See the latest community posts</h1>
       
