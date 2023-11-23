@@ -10,7 +10,6 @@ Sprint2:
   - [ ] consertar bug visual da estrela
   - [x] criar timeline
   - [x] criar funcionalidades de fazer posts
-  - [ ] criar tela de perfil
-  - [ ] mudar as informações do usuário
+  - [x] criar tela de perfil
 -
 ```
