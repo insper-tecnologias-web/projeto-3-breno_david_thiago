@@ -1,5 +1,7 @@
 import {
     LogOut,
+    LogIn,
+    PenSquare,
     User,
     Star,
   } from "lucide-react"
@@ -68,9 +70,14 @@ import {
                                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                                     <DropdownMenuSeparator />
                                     <DropdownMenuItem>
-                                      <LogOut className="mr-2 h-4 w-4" />
+                                      <LogIn className="mr-2 h-4 w-4" />
                                       <span onClick={() => props.logIn()}>Log In</span>
                                       <DropdownMenuShortcut onClick={() => props.logIn()}>⇧⌘Q</DropdownMenuShortcut>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                      <PenSquare className="mr-2 h-4 w-4" />
+                                      <span onClick={() => props.signUp()}>Sign Up</span>
+                                      <DropdownMenuShortcut onClick={() => props.signUp()}>⇧⌘W</DropdownMenuShortcut>
                                     </DropdownMenuItem>
                                   </DropdownMenuContent>)}
       </DropdownMenu>

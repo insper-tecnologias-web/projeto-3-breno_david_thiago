@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import { AvatarDemo } from '../Options/avatar';
 import bannerImage from '../../assets/banner.png'
-import Timeline from '../community/Timeline';
 import PostsProfile from './PostsProfile';
 import Sidebar from './Sidebar';
 

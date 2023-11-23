@@ -12,6 +12,7 @@ import { Login } from './components/Login';
 import { Profile } from './components/Profile';
 import Community from './components/Community/Community';
 import { Register } from './components/login/register';
+import { Toaster } from './components/ui/toaster';
 
 
 
@@ -62,5 +63,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <Toaster />
   </React.StrictMode>
 );

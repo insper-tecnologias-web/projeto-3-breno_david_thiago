@@ -51,6 +51,10 @@ const Header = (props) => {
         navigate('/login')
     }
 
+    const signUp = () => {
+        navigate('/register')
+    }
+
     return(
         <div className = 'flex flex-col flex-wrap'>
         
@@ -70,7 +74,7 @@ const Header = (props) => {
                 </Link>
             </div>
         <div className='flex flex-row '>
-            <Options logOut = {logOut} logIn = {logIn}/>
+            <Options logOut = {logOut} logIn = {logIn} signUp = {signUp}/>
             <div className='flex flex-col justify-center'>
                 <h1>{username}</h1>
                 <p className='text-gray-600'>{email}</p>
