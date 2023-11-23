@@ -7,7 +7,6 @@ Sprit1:
   - [x] criar pagina de login
   - [x] criar pagina de signup
 Sprint2:
-  - [ ] consertar bug visual da estrela
   - [x] criar timeline
   - [x] criar funcionalidades de fazer posts
   - [x] criar tela de perfil
