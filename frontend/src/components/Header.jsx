@@ -35,9 +35,7 @@ const Header = (props) => {
             axios.get("http://127.0.0.1:8000/api/user/info/", header)
               .then((res) => {
                 setUsername(res.data['username']);
-                console.log(res.data['username']);
                 setEmail(res.data['email']);
-                console.log(res.data['email']);
               })},[]);
       }
     }
@@ -45,11 +43,12 @@ const Header = (props) => {
     const logOut = () => {
         localStorage.setItem('token', JSON.stringify(""));
         localStorage.setItem('logged', false.toString());
+        navigate('/');
         window.location.reload();
     }
 
     const logIn = () => {
-        navigate('login')
+        navigate('/login')
     }
 
     return(

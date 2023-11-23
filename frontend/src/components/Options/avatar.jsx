@@ -4,9 +4,9 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar"
 
-export function AvatarDemo() {
+export function AvatarDemo(props) {
   return (
-    <Avatar className = "h-16 w-16">
+    <Avatar className = {props.tamanho}>
       <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
       <AvatarFallback>Icon</AvatarFallback>
     </Avatar>

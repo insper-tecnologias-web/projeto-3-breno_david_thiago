@@ -9,5 +9,6 @@ urlpatterns = [
     path('api/users/', views.api_user),
     path('api/user/info/', views.api_user_info),
     path('api/posts/', views.api_post_all),
+    path('api/posts/user/', views.api_post_user),
     path('api/comments/<int:id>/', views.api_comments),
 ]
