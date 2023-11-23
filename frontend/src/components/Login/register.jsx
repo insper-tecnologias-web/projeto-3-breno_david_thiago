@@ -24,6 +24,7 @@ export function Register() {
 
   const [name,setName] = useState("");
   const [erroNome,setErroNome] = useState(false);
+  const [erroUsername, setErroUsername] = useState(false);
   const [email,setEmail] = useState("");
   const [erroEmail,setErroEmail] = useState(false);
   const [password,setPassword] = useState("");
@@ -89,7 +90,7 @@ export function Register() {
       "email" : email,
     }
 
-    if(erroNome==true || erroEmail==true){
+    if(erroNome==true || erroEmail==true || erroSenhas){
       console.log("erro ok")
       setTimeout(() => {
         toast({
@@ -99,7 +100,6 @@ export function Register() {
         });
       }, 2000);
     }else{
-      let erro = false;
       axios
     .post(`http://127.0.0.1:8000/api/users/`, formData)
     .then((res) => {
@@ -115,10 +115,7 @@ export function Register() {
       })
       .catch((error) => {
         if (error.response.status == 500) {
-          console.log(error)
-          console.log("erro username")
-          erro = true
-          console.log(erro)
+          setErroUsername(true);
         }
       })
       .then((res) => {
@@ -162,6 +159,7 @@ export function Register() {
 
               <div className="mt-2 sm:col-span-6">
                 {erroNome ? <AlertDestructive>Seu username precisa ter pelomenos 3 letras ou números.</AlertDestructive> : null}
+                {erroUsername ? <AlertDestructive>Username já em uso, por favor utilize um nome único.</AlertDestructive> : null}
             </div>
             </div>
 
