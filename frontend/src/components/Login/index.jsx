@@ -3,14 +3,13 @@ import { useState } from 'react';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import { AlertDestructive } from '../Error/error';
 
 
 export function Login() {
-    const [loginStats, setLoginStats] = useState(false);
+    const [erro, setErro] = useState(false);
     const [user, setUser] = useState("");
     const [senha, setSenha] = useState("");
-    const [submitted, setSubmitted] = useState(false)
     const navigate = useNavigate();
     
       const saveToken = (userToken) => {
@@ -21,11 +20,12 @@ export function Login() {
 
     const handleInputUser = (event) => {
         setUser(event.target.value);
+        setErro(false);
       };
 
     const handleInputSenha = (event) => {
-        const { name, value } = event.target;
-        setSenha(value);
+        setSenha(event.target.value);
+        setErro(false);
     };
 
     const checkLogin = (event) => {
@@ -43,7 +43,7 @@ export function Login() {
               navigate('/')
             }).catch((error) => {
               if (error.response && error.response.status === 403) {
-                console.log('Usuário ou senha incorretos.');
+                setErro(true);
               } else {
                 console.error('Ocorreu um erro:', error);
               }
@@ -105,7 +105,7 @@ export function Login() {
                     />
                   </div>
                 </div>
-    
+                {erro ? <AlertDestructive>Usuário ou senha incorretos. Por favor tente novamente.</AlertDestructive> : null}
                 <div>
                   <button
                     type="submit"

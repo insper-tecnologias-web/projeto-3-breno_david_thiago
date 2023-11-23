@@ -8,7 +8,7 @@ import {
 
 export function AlertDestructive(props) {
   return (
-    <Alert variant="destructive">
+    <Alert className="my-1"variant="destructive">
       <AlertCircle className="h-4 w-4" />
       <AlertTitle>Erro</AlertTitle>
       <AlertDescription>
