@@ -68,6 +68,11 @@ const Timeline = (props) => {
             key={index} // Unique key based on the reversed index
             user={post.user}
             content={post.content}
+            toggleFunction = {props.toggleFunction}
+            visibility = {props.visibility}
+            selectPost = {props.selectPost}
+            posts = {posts}
+            postKey = {index}
           ></Posts>
         ))}
     </div>

@@ -131,7 +131,8 @@ def api_comments(request,id):
 
     post_comments = Comment.objects.filter(post = post)
     serialized_comments = CommentSerializer(post_comments, many = True)
-    return Response(serialized_comments.data)
+    serialized_post = PostSerializer(post)
+    return Response([serialized_comments.data, serialized_post.data])
     
 
 
