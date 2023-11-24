@@ -46,7 +46,7 @@ export function Profile() {
                 .reverse()
                 .map((post, index) => (
                 <PostsProfile
-                    key={index} // Unique key based on the reversed index
+                    key={index}
                     user={post.user}
                     content={post.content}
                 ></PostsProfile>)
@@ -63,11 +63,11 @@ export function Profile() {
             <div className='w-56'>
                 <Sidebar/>
             </div>
-            <div className='flex-1 mr-8 border-2 border-b-0 border-black overflow-y-auto'>
+            <div className='flex-1 mr-8 border-2 border-y-0 border-black overflow-y-auto'>
                 <div className='flex flex-col-reverse bg-cover h-64 ' style={{ backgroundImage: `url(${bannerImage})`}}>
                     <AvatarDemo tamanho = "flex justify-center items-center rounded-full h-36 w-36 ml-16 border-2 border-white "></AvatarDemo>
                 </div>
-                <div className='py-4 border-black border-b-2'>
+                <div className='py-4'>
                     <p className='mx-16 font-bold text-3xl'>{username}</p>
                     <p className='mx-16 text-gray-600'>{email}</p>
                 </div>
