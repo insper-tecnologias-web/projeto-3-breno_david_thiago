@@ -9,6 +9,8 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
 @api_view(['POST'])
@@ -33,7 +35,11 @@ def api_user(request):
         username = request.data['username']
         email = request.data['email']
         password = request.data['password']
-
+        try:
+            validate_password(password)
+        except ValidationError as e:
+            return Response({'password': e.messages}, status=status.HTTP_400_BAD_REQUEST)
+        
         user = User.objects.create_user(username, email, password)
         user.save()
         return Response(status=204)

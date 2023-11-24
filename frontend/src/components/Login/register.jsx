@@ -1,19 +1,13 @@
 import { Input } from "@/components/ui/input"
 import { useState, useEffect } from "react"
-import { PhoneInput } from 'react-international-phone'
 import 'react-international-phone/style.css'
 import axios from "axios";
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form'
 import { useParams } from 'react-router-dom'
 import { ButtonDemo } from "@/components/Button/button";
 import { ButtonLoading } from "@/components/Button/loading";
 import { useToast } from "@/components/ui/use-toast"
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { AlertDestructive } from '@/components/Error/error';
-library.add(faChevronDown, faChevronUp);
 
 
 export function Register() { 
@@ -31,7 +25,8 @@ export function Register() {
   const [password,setPassword] = useState("");
   const [passwordAgain,setPasswordAgain] = useState("");
   const [salvo, setSalvo] = useState(false);
-  const [erroSenhas, setErroSenhas] = useState(false); 
+  const [erroSenhas, setErroSenhas] = useState(false);
+  const [erroPassword, setErroPassword] = useState(false);  
 
 
   const nameChange = (event) =>{
@@ -70,16 +65,14 @@ export function Register() {
   }
 
   const passwordVal = () => {
+      setErroPassword(false)
     if (!(password === passwordAgain)){
       setErroSenhas(true)
   }
   else{
       setErroSenhas(false)
   }}
-    
-
  
-
   const saveData = (event) => {
 
     event.preventDefault();
@@ -89,8 +82,7 @@ export function Register() {
       "email" : email,
     }
 
-    if(erroNome || erroEmail || erroSenhas){
-      console.log("erro ok")
+    if(erroNome || erroEmail || erroSenhas || erroPassword){
       setSalvo(true);
       setTimeout(() => {
         setSalvo(false);
@@ -105,6 +97,7 @@ export function Register() {
     .post(`http://127.0.0.1:8000/api/users/`, formData)
     .then((res) => {
         setSalvo(true);
+        console.log(formData)
         setTimeout(() => {
           setSalvo(false); 
           toast({
@@ -118,14 +111,17 @@ export function Register() {
       .catch((error) => {
         if (error.response.status == 500) {
           setErroUsername(true);
+        }if(error.response.status == 400){
+          setErroPassword(true)
         }
       })    
     }; 
   };
 
   return (
-    <div className="px-96 my-12 mx-24">
-        <form className="pb-12" onSubmit={saveData}>
+    <div className="flex flex-row justify-center my-12 mx-24">
+      <div className="max-w-md w-full">
+      <form className="pb-12" onSubmit={saveData}>
           <div className="flex flex-row justify-center">
             <h2 className="text-base font-semibold leading-7 text-gray-900">Informações Pessoais</h2>
           </div>
@@ -137,6 +133,7 @@ export function Register() {
               </label>
               <div className="mt-2">
                 <Input
+                  required={true}
                   value = {name}
                   onBlur={nameVal}
                   onChange= {nameChange}
@@ -160,6 +157,7 @@ export function Register() {
               </label>
               <div className="mt-2">
                 <Input
+                  required={true}
                   value={email}
                   onBlur={emailVal}
                   onChange={emailChange}
@@ -184,6 +182,7 @@ export function Register() {
               </label>
               <div className="mt-2">
                 <Input
+                required={true}
                 id="password"
                 name="password"
                 type="password"
@@ -198,8 +197,9 @@ export function Register() {
               </label>
               <div className="mt-2">
                 <Input
-                id="password"
-                name="password"
+                required={true}
+                id="passwordagain"
+                name="passwordagain"
                 type="password"
                 onBlur={passwordVal}
                 onChange={passwordAgainChange}
@@ -208,12 +208,13 @@ export function Register() {
               </div>
             </div>
             <div className="sm:col-span-6">
-                {erroSenhas ? <AlertDestructive> As senhas não coincidem.</AlertDestructive> : null}
+              {erroPassword ? <AlertDestructive> A sua senha deve ter um tamanho mínimo de 8 caracteres.</AlertDestructive> : null}
+              {erroSenhas ? <AlertDestructive> As senhas não coincidem.</AlertDestructive> : null}
             </div>
           </div>
           {salvo ? <ButtonLoading/> : <ButtonDemo type = "submit" variante = "blue" input = "Salvar"/>}
         </form>
-
+      </div>
     </div>
   )
 }
