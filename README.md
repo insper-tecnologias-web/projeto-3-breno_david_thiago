@@ -10,5 +10,6 @@ Sprint2:
   - [x] criar timeline
   - [x] criar funcionalidades de fazer posts
   - [x] criar tela de perfil
+  - [x] criar comentarios
 -
 ```
