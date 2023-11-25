@@ -54,7 +54,7 @@ const Comment = (props) => {
 
     if(selectedPost ===null) {
       return (
-        <div  className = "flex flex-col grow justify-center items-center  border-blue-300 border-2 rounded-xl bg-blue-100 mt-10 mx-0.5 md:mx-96 min-w-[75%] max-w-screen-md">
+        <div  className = "flex flex-col grow justify-center items-center  border-blue-300 border-2 rounded-xl bg-blue-100 mt-10 mx-0.5 md:mx-96 min-w-[75%] max-w-screen-md" onClick={(e) => e.stopPropagation()}>
           <form 
           className='min-w-full flex flex-col justify-between wrap'
           method="post"
@@ -71,7 +71,7 @@ const Comment = (props) => {
           
           <button
           type = 'submit'
-          className = "flex self-end place-content-center bg-black border border-blue-100 rounded-2xl border-2 mt-2.5 min-w-[35%] md:min-w-[20%] max-h-14 py-1 md:py-4 shadow-blue-100/50 text-white  text-lg md:text-2xl font-bold mx-2.5 mb-2.5"
+          className = "flex self-end place-content-center bg-black border-blue-100 rounded-2xl border-2 mt-2.5 min-w-[35%] md:min-w-[20%] max-h-14 py-1 md:py-4 shadow-blue-100/50 text-white  text-lg md:text-2xl font-bold mx-2.5 mb-2.5"
           >
           
           <p className = "self-center">Respond</p>
@@ -84,7 +84,7 @@ const Comment = (props) => {
       )
     }
     return (
-        <div  className = "flex flex-col grow justify-center items-center  border-blue-300 border-2 rounded-xl bg-blue-100 mt-10 mx-0.5 md:mx-96 min-w-[75%] max-w-screen-md">
+        <div  className = "flex flex-col grow justify-center items-center  border-blue-300 border-2 rounded-xl bg-blue-100 mt-10 mx-0.5 md:mx-96 min-w-[75%] max-w-screen-md" onClick={(e) => e.stopPropagation()}>
             <div className="flex flex-row justify-start grow mt-10 py-4 md:py-11 px-2.5 md:px-7 min-w-full max-w-screen-md">
                 <AvatarDemo></AvatarDemo>
                 <div className='flex flex-col ml-4 md:ml-11'>
@@ -111,7 +111,7 @@ const Comment = (props) => {
                 
                 <button
                 type = 'submit'
-                className = "flex self-end place-content-center bg-black border border-blue-100 rounded-2xl border-2 mt-2.5 min-w-[35%] md:min-w-[20%] max-h-14 py-1 md:py-4 shadow-blue-100/50 text-white  text-lg md:text-2xl font-bold mx-2.5 mb-2.5"
+                className = "flex self-end place-content-center bg-black border-blue-100 rounded-2xl border-2 mt-2.5 min-w-[35%] md:min-w-[20%] max-h-14 py-1 md:py-4 shadow-blue-100/50 text-white  text-lg md:text-2xl font-bold mx-2.5 mb-2.5"
                 >
                 
                 <p className = "self-center">Respond</p>

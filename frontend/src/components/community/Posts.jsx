@@ -1,7 +1,5 @@
 import { AvatarDemo } from '../Options/avatar';
 import { MessageCircle } from 'lucide-react';
-import { useState } from 'react';
-import Comment from "./Comment";
 import { Link } from 'react-router-dom';
 
 const Posts = (props) => { 

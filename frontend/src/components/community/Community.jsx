@@ -57,7 +57,7 @@ const Community = () => {
     return (
         <div className="relative h-screen">
           {/* Blurred content */}
-          <div onClick = {() => {setFormVisibility(false)}} className={`${isFormVisible ? 'blur-sm' : ''}`}>
+          <div onClick = {() => {setFormVisibility(false)}}>
             <Header className="z-10"></Header>
             <Timeline
               posts={posts}
@@ -72,7 +72,8 @@ const Community = () => {
           {/* Comment component */}
         
           {isFormVisible &&(
-            <div className="fixed bottom-20 left-0 right-0 md:right-[15%] mx-auto mb-8 z-30">
+            <div className="backdrop-blur fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none"
+            onClick={() => setFormVisibility(false)}>
               <Comment className="justify-self-center" postId = {selectedPostId} header ={header}/>
             </div>
           )}
