@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Posts from "./Posts";
+import {ArrowBigLeft} from 'lucide-react';
 import Header from "../Header";
 import { AvatarDemo } from '../Options/avatar';
+import { useNavigate, useLocation } from "react-router-dom";
 
 const SpecPost = (props) => {
   const [postComments, setPostComments] = useState({ post: {}, comments: [] });
@@ -14,6 +15,13 @@ const SpecPost = (props) => {
   };
 
   const [token, setToken] = useState(getToken());
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleClick = () => {
+    // Navegar para a rota anterior
+    navigate(-1, { state: { from: location.pathname } });
+  };
 
   function get_header() {
     const options = {
@@ -38,7 +46,6 @@ const SpecPost = (props) => {
 
     try {
       // Make a POST request to your server
-      console.log(header)
       const response = await axios.post(`http://127.0.0.1:8000/api/comments/${props.postId}/`, { content }, header);
       
 
@@ -52,7 +59,7 @@ const SpecPost = (props) => {
       console.error('Error posting data:', error);
     }
 
-    window.location.reload();
+    getPostComments();
   };
 
 
@@ -68,9 +75,14 @@ const SpecPost = (props) => {
       
       <div className='flex flex-col self-center mx-2 min-h-content min-w-[75%] mt-24 border-blue-300  border-2 overflow-y-scroll rounded-xl bg-blue-100'>
       <div className = "bg-blue-300">
-        <h1 className='ml-7 self-start mt-7 font-mono font-black text-2xl md:text-5xl'>POST</h1>
+        <div className="flex flex-row items-center mt-16 ml-4">
+          <button onClick={handleClick}>
+            <ArrowBigLeft className="m-4" />
+        </button>
+          <h1 className='font-mono font-black text-2xl md:text-5xl'>POST</h1>
+        </div>
           <div className="flex flex-row justify-start grow mt-10 py-4 md:py-11 px-2.5 md:px-7 bg-blue-300 min-w-full max-w-screen-md">
-            <AvatarDemo></AvatarDemo>
+            <AvatarDemo tamanho = "h-28 w-28"></AvatarDemo>
             <div className='flex flex-col ml-4 md:ml-11 '>
               <div className='flex flex-row items-center mb-4'>
                 <h1 className='mr-2.5 text-black font-bold text-2xl md:text-4xl'>{postComments.post.user?.username}</h1>
@@ -98,7 +110,7 @@ const SpecPost = (props) => {
                 
                 <button
                 type = 'submit'
-                className = "flex self-end place-content-center bg-black border border-blue-300 rounded-2xl border-2 mt-2.5 min-w-[10%] md:min-w-[10%] max-h-16 py-1 px-2 md:py-4 shadow-blue-100/50 text-white  text-sm md:text-2xl font-bold mx-2.5 mb-2.5"
+                className = "flex self-end place-content-center bg-black border-blue-300 rounded-2xl border-2 mt-2.5 min-w-[10%] md:min-w-[10%] max-h-16 py-1 px-2 md:py-4 shadow-blue-100/50 text-white  text-sm md:text-2xl font-bold mx-2.5 mb-2.5"
                 >
                 
                 <p className = "self-center">Respond</p>
@@ -106,7 +118,7 @@ const SpecPost = (props) => {
             </form>
         {postComments.comments.map ((comment,index) => (
             <div key = {index} className="flex flex-row justify-start self-center grow py-4 md:py-11 px-2.5 md:px-7 min-w-full max-w-screen-md border border-blue-200">
-            <AvatarDemo></AvatarDemo>
+            <AvatarDemo tamanho = "h-16 w-16"></AvatarDemo>
             <div className='flex flex-col ml-4 md:ml-11 wrap'>
               <div className='flex flex-row items-center '>
                 <h1 className='mr-2.5 text-black font-bold text-xl md:text-3xl'>{comment.user.username}</h1>

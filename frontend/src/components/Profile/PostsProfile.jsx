@@ -12,11 +12,11 @@ const PostsProfile = (props) => {
       
             // Handle the response as needed
             console.log('Post successful:', response.data);
+            props.getPosts()
       
           } catch (error) {
             console.error('Error posting data:', error);
           }
-          window.location.reload();
         };
       
     
