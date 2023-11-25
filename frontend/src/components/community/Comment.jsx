@@ -22,7 +22,7 @@ const Comment = (props) => {
         // Handle errors
         console.error('Error posting data:', error);
       }
-      window.location.reload()
+      
     };
 
     useEffect(() => {
@@ -50,6 +50,7 @@ const Comment = (props) => {
           // Handle errors
           console.error('Error posting data:', error);
         }
+        window.location.reload()
       };
 
 
