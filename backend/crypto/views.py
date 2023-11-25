@@ -134,6 +134,7 @@ def api_comments(request,id):
     serialized_post = PostSerializer(post)
     return Response([serialized_comments.data, serialized_post.data])
 
+
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def api_delete_post(request,id):
@@ -148,6 +149,7 @@ def api_post_id(request,id):
     post = Post.objects.get(id = id)
     serialized_post = PostSerializer(post)
     return Response(serialized_post.data)
+
     
 
 
