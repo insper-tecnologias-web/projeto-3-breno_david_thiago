@@ -63,17 +63,18 @@ export function Profile() {
     },[]); // Empty dependency array to run the effect only once on mount
 
       return (
-        <div className='flex flex-row h-screen'>
-            <div className='min-w-min max-w-max'>
+        <div className='flex flex-col md:flex-row max-w-screen h-screen'>
+            <div>
                 <Sidebar/>
             </div>
-            <div className='flex-1 mr-8 border-2 border-y-0 border-black overflow-y-auto'>
-                <div className='flex flex-col-reverse bg-cover h-24 md:h-60 ' style={{ backgroundImage: `url(${bannerImage})`}}>
-                    <AvatarDemo tamanho = "flex justify-center items-center rounded-full h-16 md:h-32 min-w-fit max-w-max ml-16 border-2 border-white "></AvatarDemo>
-                </div>
-                <div className='py-4'>
-                    <p className='mx-16 font-bold text-3xl'>{username}</p>
-                    <p className='mx-16 text-gray-600'>{email}</p>
+            <div className='flex-1 border-2 min-w-full'>
+                <div className='flex flex-col-reverse bg-cover border-black border-b-2 mb-8 h-24 md:h-60 ' style={{ backgroundImage: `url(${bannerImage})`}}></div>
+                <div className='flex flex-row justify-start'>
+                    <AvatarDemo tamanho = "rounded-full h-16 md:h-36 min-w-fit max-w-max ml-4 md:ml-16 border-2 border-white "></AvatarDemo>
+                    <div className='flex flex-col'>
+                    <p className=' mx-4 md:mx-16 font-bold text-2xl md:text-3xl'>{username}</p>
+                    <p className=' mx-4 md:mx-16 mx-16 text-gray-600 text-md md:text-3xl'>{email}</p>
+                    </div>
                 </div>
                 <div>
                     <div className='px-4 pb-4'>

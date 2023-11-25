@@ -82,9 +82,9 @@ const SpecPost = (props) => {
           <h1 className='font-mono font-black text-2xl md:text-5xl'>POST</h1>
         </div>
           <div className="flex flex-row justify-start grow mt-10 py-4 md:py-11 px-2.5 md:px-7 bg-blue-300 min-w-full max-w-screen-md">
-            <AvatarDemo tamanho = "h-28 w-28"></AvatarDemo>
+            <AvatarDemo tamanho = "rounded-full h-10 md:h-16 min-w-fit max-w-max border-2 border-white "></AvatarDemo>
             <div className='flex flex-col ml-4 md:ml-11 '>
-              <div className='flex flex-row items-center mb-4'>
+              <div className='flex flex-row items-center mb-4 md:mb-7'>
                 <h1 className='mr-2.5 text-black font-bold text-2xl md:text-4xl'>{postComments.post.user?.username}</h1>
                 <h1 className='text-gray-500 font-md text-2xl md:text-4xl'>@{postComments.post.user?.username}</h1>
               </div>
@@ -118,9 +118,9 @@ const SpecPost = (props) => {
             </form>
         {postComments.comments.map ((comment,index) => (
             <div key = {index} className="flex flex-row justify-start self-center grow py-4 md:py-11 px-2.5 md:px-7 min-w-full max-w-screen-md border border-blue-200">
-            <AvatarDemo tamanho = "h-16 w-16"></AvatarDemo>
+            <AvatarDemo tamanho = "rounded-full h-10 md:h-16 min-w-fit max-w-max border-2 border-white "></AvatarDemo>
             <div className='flex flex-col ml-4 md:ml-11 wrap'>
-              <div className='flex flex-row items-center '>
+              <div className='flex flex-row items-center mb-4 md:mb-7'>
                 <h1 className='mr-2.5 text-black font-bold text-xl md:text-3xl'>{comment.user.username}</h1>
                 <h1 className='text-gray-500 font-md text-xl md:text-3xl'>@{comment.user.username}</h1>
               </div>
