@@ -133,6 +133,23 @@ def api_comments(request,id):
     serialized_comments = CommentSerializer(post_comments, many = True)
     serialized_post = PostSerializer(post)
     return Response([serialized_comments.data, serialized_post.data])
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def api_delete_post(request,id):
+    post = Post.objects.get(id = id)
+    if request.method == 'DELETE':
+        post.delete()
+    return Response({"message": "Post deleted successfully"}, status=status.HTTP_201_CREATED)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def api_post_id(request,id):
+    post = Post.objects.get(id = id)
+    serialized_post = PostSerializer(post)
+    return Response(serialized_post.data)
+
     
 
 

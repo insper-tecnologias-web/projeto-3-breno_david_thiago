@@ -10,6 +10,7 @@ const Timeline = (props) => {
   const posts = props.posts;
   const [content,setContent] = useState('');
   const header = props.header;
+ 
 
  
 
@@ -68,11 +69,11 @@ const Timeline = (props) => {
             key={index} // Unique key based on the reversed index
             user={post.user}
             content={post.content}
+            postId = {post.id}
             toggleFunction = {props.toggleFunction}
+            selectPost= {props.selectPost}
             visibility = {props.visibility}
-            selectPost = {props.selectPost}
-            posts = {posts}
-            postKey = {index}
+            
           ></Posts>
         ))}
     </div>

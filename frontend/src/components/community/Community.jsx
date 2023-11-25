@@ -8,22 +8,22 @@ import Posts from "./Posts";
 
 const Community = () => {
     const [isFormVisible, setFormVisibility] = useState(false);
-    const [selectedPost, setSelectedPost] = useState();
+    const [selectedPostId, setSelectedPostId] = useState(null);
+    
 
     const toggleFormVisibility = () => {
         setFormVisibility(!isFormVisible);
-        console.log(isFormVisible)
         
     }
+    
 
-    const selectPosts = (posts) => {
-        setPosts(posts)
+    const selectPost = (postId) => {
+      
+      setSelectedPostId(postId);
+      
     }
 
-    const selectPost = (i) => {
-        setSelectedPost(i);
-        console.log(selectedPost)
-    }
+    
     const [posts, setPosts] = useState([]);
     const getToken = () => {
         const tokenString = localStorage.getItem('token');
@@ -63,17 +63,17 @@ const Community = () => {
               posts={posts}
               header={header}
               toggleFunction={toggleFormVisibility}
-              visibility={isFormVisible}
               selectPost = {selectPost}
-              selectPosts = {selectPosts}
+              visibility={isFormVisible}
               className="z-5"
             ></Timeline>
           </div>
       
           {/* Comment component */}
-          {isFormVisible && (
+        
+          {isFormVisible &&(
             <div className="fixed bottom-20 left-0 right-0 md:right-[15%] mx-auto mb-8 z-30">
-              <Comment className="justify-self-center" posts = {posts} selectedPost = {selectedPost} header ={header}/>
+              <Comment className="justify-self-center" postId = {selectedPostId} header ={header}/>
             </div>
           )}
         </div>

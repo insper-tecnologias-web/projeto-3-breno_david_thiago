@@ -45,10 +45,13 @@ export function Profile() {
                 .slice()
                 .reverse()
                 .map((post, index) => (
+                    
                 <PostsProfile
                     key={index}
                     user={post.user}
                     content={post.content}
+                    header = {header}
+                    postId = {post.id}
                 ></PostsProfile>)
                 ))
                     setContent(postContent)}
