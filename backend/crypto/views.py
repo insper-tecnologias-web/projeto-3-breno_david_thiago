@@ -138,10 +138,16 @@ def api_comments(request,id):
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def api_delete_post(request,id):
-    post = Post.objects.get(id = id)
+    try:
+        post = Post.objects.get(id=id)
+    except Post.DoesNotExist:
+        return Response({"message": "Post not found"}, status=status.HTTP_404_NOT_FOUND)
+
     if request.method == 'DELETE':
         post.delete()
-    return Response({"message": "Post deleted successfully"}, status=status.HTTP_201_CREATED)
+
+    return Response({"message": "Post deleted successfully"}, status=status.HTTP_200_OK)
+    
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
