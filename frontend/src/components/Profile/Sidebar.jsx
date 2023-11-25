@@ -17,7 +17,7 @@ const Sidebar = (props) => {
     }
 
     return(
-    <div className="flex flex-col pt-8 h-full items-center justify-between bg-gray-100 font-bold text-xl">
+    <div className="flex flex-col pt-8 h-full min-w-min max-w-max items-center justify-between bg-gray-100 font-bold text-xl">
         <div className="flex flex-col items-center">
             <button className="flex flex-row items-center rounded-lg px-2 transition duration-300 ease-in-out hover:bg-gray-200" onClick={()=>{navigate('/')}}>
                 <Home></Home>

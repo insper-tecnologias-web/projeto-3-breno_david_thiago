@@ -38,7 +38,7 @@ export function Profile() {
     const getPosts = () =>{ 
             axios.get("http://127.0.0.1:8000/api/posts/user/",header)
             .then((res)=>{
-                console.log(res.data.length)
+                
                 if(res.data.length===0){
                     setContent(<p className='flex font-bold mt-48 text-2xl items-center justify-center'>Você ainda não possui nenhum post :(</p>)
                 }else{const postContent = ((res.data)
@@ -63,12 +63,12 @@ export function Profile() {
 
       return (
         <div className='flex flex-row h-screen'>
-            <div className='w-56'>
+            <div className='min-w-min max-w-max'>
                 <Sidebar/>
             </div>
             <div className='flex-1 mr-8 border-2 border-y-0 border-black overflow-y-auto'>
-                <div className='flex flex-col-reverse bg-cover h-64 ' style={{ backgroundImage: `url(${bannerImage})`}}>
-                    <AvatarDemo tamanho = "flex justify-center items-center rounded-full h-36 w-36 ml-16 border-2 border-white "></AvatarDemo>
+                <div className='flex flex-col-reverse bg-cover h-24 md:h-60 ' style={{ backgroundImage: `url(${bannerImage})`}}>
+                    <AvatarDemo tamanho = "flex justify-center items-center rounded-full h-16 md:h-32 min-w-fit max-w-max ml-16 border-2 border-white "></AvatarDemo>
                 </div>
                 <div className='py-4'>
                     <p className='mx-16 font-bold text-3xl'>{username}</p>

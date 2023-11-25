@@ -32,9 +32,10 @@ const PostsProfile = (props) => {
                         </div>
                     </div>
                     <p className = 'text-black font-md text-lg md:text-xl mb-4'>{props.content}</p>
-                    <button onClick={handleClick}><Trash></Trash></button>
+                    
                 </div>
                 </Link>
+                <button onClick={handleClick}><Trash></Trash></button>
         </div>
     )
     }
