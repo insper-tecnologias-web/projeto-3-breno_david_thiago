@@ -67,13 +67,14 @@ export function Profile() {
             <div>
                 <Sidebar/>
             </div>
-            <div className='flex-1 border-2 min-w-full'>
-                <div className='flex flex-col-reverse bg-cover border-black border-b-2 mb-8 h-24 md:h-60 ' style={{ backgroundImage: `url(${bannerImage})`}}></div>
+            <div className='flex-1 overflow-y-auto'>
+                <div className='flex flex-col-reverse bg-cover mb-8 h-32 md:h-60 ' style={{ backgroundImage: `url(${bannerImage})`}}>
+                <AvatarDemo tamanho = "rounded-full h-16 md:h-36 min-w-fit max-w-max ml-4 md:ml-16 border-2 border-white "></AvatarDemo>    
+                </div>
                 <div className='flex flex-row justify-start'>
-                    <AvatarDemo tamanho = "rounded-full h-16 md:h-36 min-w-fit max-w-max ml-4 md:ml-16 border-2 border-white "></AvatarDemo>
                     <div className='flex flex-col'>
                     <p className=' mx-4 md:mx-16 font-bold text-2xl md:text-3xl'>{username}</p>
-                    <p className=' mx-4 md:mx-16 mx-16 text-gray-600 text-md md:text-3xl'>{email}</p>
+                    <p className=' mx-4 md:mx-16 text-gray-600 text-md md:text-3xl'>{email}</p>
                     </div>
                 </div>
                 <div>
