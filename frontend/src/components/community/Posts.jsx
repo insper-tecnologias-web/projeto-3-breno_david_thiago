@@ -6,19 +6,18 @@ import { Link } from 'react-router-dom';
 
 const Posts = (props) => { 
     const handleClick = (event) => {
-        props.selectPost(props.postKey);
-        console.log('Clicked on post with key:', props.postKey);
+        
         props.toggleFunction();
+        props.selectPost(props.postId);
         event.stopPropagation();
     };
-    const originalPosts = props.posts
-    const originalPostIndex = originalPosts.length - props.postKey
+    
 
     return (
         
         <div className="flex flex-col justify-start grow mt-10 py-4 md:py-11 px-2.5 md:px-7 min-w-full max-w-screen-md rounded-xl border border-solid border-blue-300 border-1">
             <Link className="flex flex-row
-            " to = {`/community/${originalPostIndex}`}>
+            " to = {`/community/${props.postId}`}>
                 <AvatarDemo></AvatarDemo>
                 <div className='flex flex-col ml-4 md:ml-11'>
                     <div className='flex flex-row items-center mb-4'>

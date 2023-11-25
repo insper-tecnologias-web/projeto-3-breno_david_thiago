@@ -17,7 +17,7 @@ class PostSerializer(serializers.ModelSerializer):
     user = UserSerializer()
     class Meta:
         model = Post
-        fields = ['content', 'user']
+        fields = ['id','content', 'user']
 
 class CommentSerializer(serializers.ModelSerializer):
     user = UserSerializer()
