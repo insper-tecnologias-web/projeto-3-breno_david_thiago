@@ -1,6 +1,6 @@
 import { AvatarDemo } from '../Options/avatar';
 import { Trash } from 'lucide-react';
-
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const PostsProfile = (props) => {
@@ -20,7 +20,9 @@ const PostsProfile = (props) => {
       
     
     return(
-        <div className = ' flex flex-row justify-start grow mt-10 py-4 md:py-11 px-2.5 md:px-7 min-w-full max-w-screen-md rounded-xl border border-solid border-blue-300  border-1'>
+        <div className="flex flex-col justify-start grow mt-10 py-4 md:py-11 px-2.5 md:px-7 min-w-full max-w-screen-md rounded-xl border border-solid border-blue-300 border-1">
+                <Link className="flex flex-row
+            " to = {`/community/${props.postId}`}>
                 <AvatarDemo className = "min-h-full mr-11"></AvatarDemo>
                 <div className = 'flex flex-col ml-2.5 md:ml-4'>
                     <div className = 'flex flex-row justify-between items-center mb-4'>
@@ -32,6 +34,7 @@ const PostsProfile = (props) => {
                     <p className = 'text-black font-md text-lg md:text-xl mb-4'>{props.content}</p>
                     <button onClick={handleClick}><Trash></Trash></button>
                 </div>
+                </Link>
         </div>
     )
     }
