@@ -22,7 +22,7 @@ const Posts = (props) => {
                         <h1 className='mr-2.5 text-black font-bold text-xl md:text-3xl'>{props.user.username}</h1>
                         <h1 className='text-gray-500 font-md text-lg md:text-2xl'>@{props.user.username}</h1>
                     </div>
-                    <p className='text-black font-md text-lg md:text-2xl'>{props.content}</p>
+                    <p className='text-black font-md text-lg md:text-2xl break-all'>{props.content}</p>
                     </div>
             </Link>
                 <div className='flex flex-row justify-start mt-2.5'>

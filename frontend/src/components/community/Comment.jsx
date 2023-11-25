@@ -22,6 +22,7 @@ const Comment = (props) => {
         // Handle errors
         console.error('Error posting data:', error);
       }
+      window.location.reload()
     };
 
     useEffect(() => {
@@ -92,7 +93,7 @@ const Comment = (props) => {
                         <h1 className='mr-2.5 text-black font-bold text-2xl md:text-4xl'>{selectedPost.user.username}</h1>
                         <h1 className='text-gray-500 font-md text-2xl md:text-4xl'>@{selectedPost.user.username}</h1>
                     </div>
-                    <p className='text-black font-md text-2xl md:text-4xl'>{selectedPost.content}</p>
+                    <p className='text-black font-md text-2xl md:text-4xl break-all'>{selectedPost.content}</p>
                 </div>
             </div>
             <form 
