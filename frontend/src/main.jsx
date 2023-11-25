@@ -13,12 +13,17 @@ import { Profile } from './components/Profile';
 import Community from './components/Community/Community';
 import { Register } from './components/login/register';
 import { Toaster } from './components/ui/toaster';
-
+import SpecPost from './components/Community/SpecPost'
 
 
 const CoinWrapper = () => {
   const {coinKey} = useParams();
   return <Coin coinKey = {coinKey}/>;
+}
+
+const SpecPostWrapper = () => {
+  const {postId} = useParams();
+  return <SpecPost postId = {postId}/>;
 }
 
 
@@ -54,7 +59,10 @@ const router = createBrowserRouter(
     path: "/profile",
     element: <Profile></Profile>
   },
-  
+  {
+    path: "/community/:postId",
+    element: <SpecPostWrapper></SpecPostWrapper>
+  }
 ]);
 
   
