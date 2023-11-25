@@ -37,7 +37,6 @@ const Comment = (props) => {
     
         try {
           // Make a POST request to your server
-          console.log(header)
           const response = await axios.post(`http://127.0.0.1:8000/api/comments/${props.postId}/`, { content }, header);
           
     
@@ -50,7 +49,7 @@ const Comment = (props) => {
           // Handle errors
           console.error('Error posting data:', error);
         }
-        window.location.reload()
+        getPost();
       };
 
 

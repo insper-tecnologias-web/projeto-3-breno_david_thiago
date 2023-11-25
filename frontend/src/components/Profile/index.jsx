@@ -52,6 +52,7 @@ export function Profile() {
                     content={post.content}
                     header = {header}
                     postId = {post.id}
+                    getPosts = {getPosts}
                 ></PostsProfile>)
                 ))
                     setContent(postContent)}
