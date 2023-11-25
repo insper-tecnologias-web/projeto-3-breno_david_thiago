@@ -74,7 +74,7 @@ const Timeline = (props) => {
         >
 
         <input 
-          className = "min-w-[75%] min-h-full border border-2 text-xl border-white hover:border-blue-300 rounded-xl py-7 md:py-11 px-11 md:px-16"
+          className = "min-w-[75%] min-h-full border-2 text-xl border-white hover:border-blue-300 rounded-xl py-7 md:py-11 px-11 md:px-16"
           type = "text"
           required={true}
           name = "content"
