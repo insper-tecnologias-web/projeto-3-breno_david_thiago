@@ -53,7 +53,7 @@ const Comment = (props) => {
       };
 
 
-    if(selectedPost ===null) {
+    if(selectedPost === null) {
       return (
         <div  className = "flex flex-col grow justify-center items-center  border-blue-300 border-2 rounded-xl bg-blue-100 mt-10 mx-0.5 md:mx-96 min-w-[75%] max-w-screen-md" onClick={(e) => e.stopPropagation()}>
           <form 
@@ -63,6 +63,7 @@ const Comment = (props) => {
           >
           <input 
           className = " grow focus:outline-none min-w-full min-h-full bg-blue-100 text-xl md:text-3xl border-none py-7 md:py-11 px-11 md:px-16"
+          required={true}
           type = "text"
           name = "content"
           placeholder= "Post your response"
@@ -103,6 +104,7 @@ const Comment = (props) => {
                 >
                 <input 
                 className = " grow focus:outline-none min-w-full min-h-full bg-blue-100 text-xl md:text-3xl border-none py-7 md:py-11 px-11 md:px-16"
+                required={true}
                 type = "text"
                 name = "content"
                 placeholder= "Post your response"

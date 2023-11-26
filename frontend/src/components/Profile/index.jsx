@@ -62,6 +62,33 @@ export function Profile() {
         getPosts();
     },[]); // Empty dependency array to run the effect only once on mount
 
+    const handlePostClick = () =>{
+        getPosts();
+    }
+
+    const handleCommentClick = () =>{
+        axios.get("http://127.0.0.1:8000/api/comments/user/",header)
+            .then((res)=>{
+                if(res.data.length===0){
+                    setContent(<p className='flex font-bold mt-48 text-2xl items-center justify-center'>Você ainda não possui nenhum comentário :(</p>)
+                }else{const postContent = ((res.data)
+                .slice()
+                .reverse()
+                .map((post, index) => (
+                    
+                <PostsProfile
+                    key={index}
+                    user={post.user}
+                    content={post.content}
+                    header = {header}
+                    postId = {post.id}
+                    getPosts = {getPosts}
+                ></PostsProfile>)
+                ))
+                    setContent(postContent)}
+            })
+    }
+
       return (
         <div className='flex flex-col md:flex-row max-w-screen h-screen'>
             <div>
@@ -76,6 +103,10 @@ export function Profile() {
                     <p className=' mx-4 md:mx-16 font-bold text-2xl md:text-3xl'>{username}</p>
                     <p className=' mx-4 md:mx-16 text-gray-600 text-md md:text-3xl'>{email}</p>
                     </div>
+                </div>
+                <div className='flex flex-row sticky top-0 bg-white justify-evenly py-2 mt-4 font-bold text-xl border-y-2 border-gray-400 z-10'>
+                    <button className='focus:border-b-4 border-blue-500' onClick={handlePostClick}>Posts</button>
+                    <button className='focus:border-b-4 border-blue-500' onClick={handleCommentClick}>Comments</button>
                 </div>
                 <div>
                     <div className='px-4 pb-4'>

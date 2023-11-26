@@ -25,7 +25,7 @@ const Posts = (props) => {
                     <p className='text-black font-md text-lg md:text-2xl break-all'>{props.content}</p>
                     </div>
             </Link>
-                <div className='flex flex-row justify-start mt-2.5'>
+                <div className='flex items-center justify-center w-8 h-8 hover:bg-gray-500 hover:bg-opacity-60 hover:rounded-full active:bg-gray-500 mt-2.5'>
                     <button onClick={handleClick}><MessageCircle></MessageCircle></button>
                 </div>
             <div/>
