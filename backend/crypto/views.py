@@ -120,6 +120,13 @@ def api_post_user(request):
     serialized_post = PostSerializer(post_user, many = True)
     return Response(serialized_post.data)
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def api_comment_user(request):
+    comment_user = Comment.objects.filter(user=request.user)
+    serialized_comment = CommentSerializer(comment_user, many = True)
+    return Response(serialized_comment.data)
+
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def api_comments(request,id):

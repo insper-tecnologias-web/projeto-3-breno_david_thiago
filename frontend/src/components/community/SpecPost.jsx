@@ -75,8 +75,8 @@ const SpecPost = (props) => {
       
       <div className='flex flex-col self-center mx-2 min-h-content min-w-[75%] mt-24 border-blue-300  border-2 overflow-y-scroll rounded-xl bg-blue-100'>
       <div className = "bg-blue-300">
-        <div className="flex flex-row items-center mt-16 ml-4">
-          <button onClick={handleClick}>
+        <div className="flex flex-row  items-center mt-16 ml-4">
+          <button className="" onClick={handleClick}>
             <ArrowBigLeft className="m-4" />
         </button>
           <h1 className='font-mono font-black text-2xl md:text-5xl'>POST</h1>
@@ -101,6 +101,7 @@ const SpecPost = (props) => {
                 >
                 <input 
                 className = " grow focus:outline-none  min-h-full bg-blue-100 text-lg md:text-3xl border-none py-7 md:py-11 pl-2 md:px-16"
+                required={true}
                 type = "text"
                 name = "content"
                 placeholder= "Post your response"
@@ -110,10 +111,9 @@ const SpecPost = (props) => {
                 
                 <button
                 type = 'submit'
-                className = "flex self-end place-content-center bg-black border-blue-300 rounded-2xl border-2 mt-2.5 min-w-[10%] md:min-w-[10%] max-h-16 py-1 px-2 md:py-4 shadow-blue-100/50 text-white  text-sm md:text-2xl font-bold mx-2.5 mb-2.5"
+                className = "flex self-end place-content-center bg-black border-gray-400 rounded-2xl border-2 mt-2.5 min-w-[10%] md:min-w-[10%] max-h-16 py-1 px-2 md:py-4 shadow-blue-100/50 text-white  text-sm md:text-2xl font-bold mx-2.5 mb-2.5"
                 >
-                
-                <p className = "self-center">Respond</p>
+                  Respond
                 </button>
             </form>
         {postComments.comments.map ((comment,index) => (
