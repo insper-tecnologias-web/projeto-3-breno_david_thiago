@@ -118,7 +118,7 @@ const SpecPost = (props) => {
             </form>
         {postComments.comments.map ((comment,index) => (
             <div key = {index} className="flex flex-row justify-start self-center grow py-4 md:py-11 px-2.5 md:px-7 min-w-full max-w-screen-md border border-blue-200">
-            <AvatarDemo tamanho = "h-10 md:h-20  md:min-w-fit rounded-full"></AvatarDemo>
+            <AvatarDemo tamanho = "h-10 md:h-20 min-w-fit rounded-full"></AvatarDemo>
             <div className='flex flex-col ml-4 md:ml-11 wrap'>
               <div className='flex flex-row items-center mb-4 md:mb-7'>
                 <h1 className='mr-2.5 text-black font-bold text-xl md:text-3xl'>{comment.user.username}</h1>
