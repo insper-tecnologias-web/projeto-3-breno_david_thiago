@@ -34,7 +34,6 @@ export function Register() {
   const [erroSenhas, setErroSenhas] = useState(false); 
   const {register, setValue, setFocus} = useForm();
 
-
   const nameChange = (event) =>{
     setName(event.target.value);
   };
