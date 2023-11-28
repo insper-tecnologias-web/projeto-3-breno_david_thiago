@@ -99,7 +99,7 @@ export function Register() {
     }else{
       let erro = false
       axios
-    .post(`http://127.0.0.1:8000/api/users/`, formData)
+    .post(`https://cryptooracle-projeto-3.onrender.com/api/users/`, formData)
     .then((res) => {
         setSalvo(true);
         setTimeout(() => {

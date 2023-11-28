@@ -44,7 +44,7 @@ const Community = () => {
 
     const getPosts= async () => {
         try {
-            const res = await axios.get("http://127.0.0.1:8000/api/posts/",header);
+            const res = await axios.get("https://cryptooracle-projeto-3.onrender.com/api/posts/",header);
             setPosts(res.data);
             
         } catch (error) {

@@ -32,7 +32,7 @@ const Header = (props) => {
     if (isLogged !== null) {
       if (isLogged){
         useEffect(() => {
-            axios.get("http://127.0.0.1:8000/api/user/info/", header)
+            axios.get("https://cryptooracle-projeto-3.onrender.com/api/user/info/", header)
               .then((res) => {
                 setUsername(res.data['username']);
                 setEmail(res.data['email']);

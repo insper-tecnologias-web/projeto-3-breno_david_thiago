@@ -30,14 +30,14 @@ export function Profile() {
     const header = get_header()
     
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/user/info/", header)
+        axios.get("https://cryptooracle-projeto-3.onrender.com/api/user/info/", header)
           .then((res) => {
             setUsername(res.data['username']);
             setEmail(res.data['email']);
           })},[]);
 
     const getPosts = () =>{ 
-            axios.get("http://127.0.0.1:8000/api/posts/user/",header)
+            axios.get("https://cryptooracle-projeto-3.onrender.com/api/posts/user/",header)
             .then((res)=>{
                 
                 if(res.data.length===0){
@@ -68,7 +68,7 @@ export function Profile() {
     }
 
     const handleCommentClick = () =>{
-        axios.get("http://127.0.0.1:8000/api/comments/user/",header)
+        axios.get("https://cryptooracle-projeto-3.onrender.com/api/comments/user/",header)
             .then((res)=>{
                 console.log(res.data)
                 if(res.data.length===0){

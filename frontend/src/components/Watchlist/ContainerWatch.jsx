@@ -1,8 +1,4 @@
-import { Bitcoin, Star, DollarSign, CandlestickChart } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-
+import { Star } from 'lucide-react';
 
 import {
   Table,

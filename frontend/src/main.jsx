@@ -1,11 +1,9 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useState } from 'react';
 import './index.css';
 import App from './App';
 import Watchlist from './components/Watchlist/index'
-import axios from 'axios'
 import { createBrowserRouter, RouterProvider, useParams } from 'react-router-dom';
 import Coin from './components/Coin/Coin'
 import { Login } from './components/Login';

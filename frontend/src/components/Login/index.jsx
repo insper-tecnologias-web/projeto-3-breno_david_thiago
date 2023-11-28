@@ -36,7 +36,7 @@ export function Login() {
         }
 
         axios
-          .post("http://127.0.0.1:8000/api/token/", formData)
+          .post("https://cryptooracle-projeto-3.onrender.com/api/token/", formData)
           .then((res) => {
               console.log(res.data);
               saveToken(res.data);

@@ -8,7 +8,7 @@ const PostsProfile = (props) => {
     const handleClick = async() => {
         
         try {
-            const response = await axios.delete(`http://127.0.0.1:8000/profile/delete/${props.postId}/`, props.header);
+            const response = await axios.delete(`https://cryptooracle-projeto-3.onrender.com/profile/delete/${props.postId}/`, props.header);
       
             // Handle the response as needed
             console.log('Post successful:', response.data);

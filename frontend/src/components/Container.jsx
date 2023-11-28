@@ -42,7 +42,7 @@ const Container = (props) => {
  
   // Fetch watchlist data and update uuidArray when the component mounts
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/api/watchlist/", header)
+    axios.get("https://cryptooracle-projeto-3.onrender.com/api/watchlist/", header)
       .then((res) => {
         setWatch(res.data);
         res.data.map((coin) => {
@@ -59,7 +59,7 @@ const Container = (props) => {
     
 
   const handleClick = (coin) => {
-    axios.get("http://127.0.0.1:8000/api/watchlist/", header)
+    axios.get("https://cryptooracle-projeto-3.onrender.com/api/watchlist/", header)
       .then((res) => {
         setWatch(res.data);
         res.data.map((coin) => {
@@ -80,7 +80,7 @@ const Container = (props) => {
         };
   
         // Make the API request to update the watchlist
-        axios.post(`http://127.0.0.1:8000/api/watchlist/${coin.uuid}/`, data, header)
+        axios.post(`https://cryptooracle-projeto-3.onrender.com/api/watchlist/${coin.uuid}/`, data, header)
           .then(() => {
             // After the request is successful, update the watchlist and uuidArray
             setWatch([...watch, data]);

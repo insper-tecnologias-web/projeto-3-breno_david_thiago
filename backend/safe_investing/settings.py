@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-fssl^$v29z_81fen1uvl1yfql8%#j3#lge1^+wv8hj=&$(ftc^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [ 'cryptooracle-projeto-3.onrender.com','localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://cryptooracle-projeto-3.onrender.com']
 
 CORS_ORIGIN_ALLOW_ALL = True
 # Application definition

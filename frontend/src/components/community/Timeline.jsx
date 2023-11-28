@@ -21,7 +21,7 @@ const Timeline = (props) => {
     try {
       // Make a POST request to your server
       console.log(header)
-      const response = await axios.post('http://127.0.0.1:8000/api/posts/', { content }, header);
+      const response = await axios.post('https://cryptooracle-projeto-3.onrender.com/api/posts/', { content }, header);
 
       // Handle the response as needed
       console.log('Post successful:', response.data);

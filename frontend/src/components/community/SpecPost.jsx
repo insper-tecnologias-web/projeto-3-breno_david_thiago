@@ -34,7 +34,7 @@ const SpecPost = (props) => {
 
   const getPostComments = async () => {
     try {
-      const res = await axios.get(`http://127.0.0.1:8000/api/comments/${props.postId}`, header);
+      const res = await axios.get(`https://cryptooracle-projeto-3.onrender.com/api/comments/${props.postId}`, header);
       setPostComments({ post: res.data[1], comments: res.data[0] });
     } catch (error) {
       console.error("Error fetching posts:", error);
@@ -46,7 +46,7 @@ const SpecPost = (props) => {
 
     try {
       // Make a POST request to your server
-      const response = await axios.post(`http://127.0.0.1:8000/api/comments/${props.postId}/`, { content }, header);
+      const response = await axios.post(`https://cryptooracle-projeto-3.onrender.com/api/comments/${props.postId}/`, { content }, header);
       
 
       // Handle the response as needed

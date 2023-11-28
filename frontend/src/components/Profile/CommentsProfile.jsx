@@ -8,7 +8,7 @@ const CommentsProfile = (props) => {
     const handleClick = async() => {
         
         try {
-            const response = await axios.delete(`http://127.0.0.1:8000/profile/commments/delete/${props.commentId}/`, props.header);
+            const response = await axios.delete(`https://cryptooracle-projeto-3.onrender.com/profile/commments/delete/${props.commentId}/`, props.header);
       
             // Handle the response as needed
             props.getComments()
