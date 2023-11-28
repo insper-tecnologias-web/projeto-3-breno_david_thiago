@@ -135,7 +135,7 @@ export function Register() {
   };
 
   return (
-    <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+    <div className="mx-auto w-full sm:max-w-sm">
         <form className="pb-12" onSubmit={saveData}>
           <div className="flex flex-row justify-center">
             <h2 className="text-base font-semibold leading-7 text-gray-900">Informações Pessoais</h2>
