@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'safe_investing.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='',
+        default='postgres://cryptouser:ALkCwZcEP4b4mmHd5JzR4MQhcvztw2Xl@dpg-cliu18km411s73du1n7g-a.oregon-postgres.render.com/cryptooracle',
         conn_max_age=600,
         ssl_require=not DEBUG
     )
