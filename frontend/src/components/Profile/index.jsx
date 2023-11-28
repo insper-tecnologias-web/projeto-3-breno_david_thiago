@@ -98,7 +98,7 @@ export function Profile() {
             </div>
             <div className='flex-1 overflow-y-auto'>
                 <div className='flex flex-col-reverse bg-cover mb-8 h-32 md:h-60 ' style={{ backgroundImage: `url(${bannerImage})`}}>
-                <AvatarDemo tamanho = "rounded-full h-16 md:h-36 ml-4 md:ml-16 border-2 border-white "></AvatarDemo>    
+                <AvatarDemo tamanho = "h-16 md:h-28 ml-4 md:ml-16"></AvatarDemo>    
                 </div>
                 <div className='flex flex-row justify-start'>
                     <div className='flex flex-col'>
