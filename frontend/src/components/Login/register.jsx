@@ -1,18 +1,21 @@
 import { Input } from "@/components/ui/input"
 import { useState, useEffect } from "react"
-import 'react-international-phone/style.css'
 import axios from "axios";
+import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form'
 import { useParams } from 'react-router-dom'
 import { ButtonDemo } from "@/components/Button/button";
 import { ButtonLoading } from "@/components/Button/loading";
 import { useToast } from "@/components/ui/use-toast"
-import { useNavigate } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AlertDestructive } from '@/components/Error/error';
+library.add(faChevronDown, faChevronUp);
 
 
 export function Register() { 
 
-  const navigate = useNavigate();
   const { toast } = useToast()
   const params = useParams();
   const userId = params.userId;
@@ -25,8 +28,9 @@ export function Register() {
   const [password,setPassword] = useState("");
   const [passwordAgain,setPasswordAgain] = useState("");
   const [salvo, setSalvo] = useState(false);
-  const [erroSenhas, setErroSenhas] = useState(false);
-  const [erroPassword, setErroPassword] = useState(false);  
+  const [errorGeral, setErrorGeral] = useState(false);
+  const [erroSenhas, setErroSenhas] = useState(false); 
+  const {register, setValue, setFocus} = useForm();
 
   const nameChange = (event) =>{
     setName(event.target.value);
@@ -64,14 +68,16 @@ export function Register() {
   }
 
   const passwordVal = () => {
-      setErroPassword(false)
     if (!(password === passwordAgain)){
       setErroSenhas(true)
   }
   else{
       setErroSenhas(false)
   }}
+    
+
  
+
   const saveData = (event) => {
 
     event.preventDefault();
@@ -81,46 +87,56 @@ export function Register() {
       "email" : email,
     }
 
-    if(erroNome || erroEmail || erroSenhas || erroPassword){
-      setSalvo(true);
+    if(erroNome==true || erroEmail==true || erroSenhas){
+      console.log("erro ok")
       setTimeout(() => {
-        setSalvo(false);
         toast({
-          variant: "destructive",
+          variant: "red",
           title: "Erro",
-          description: "Resolva os erros antes de salvar.",
+          description: "Resolva os erros antes de salvar",
         });
       }, 2000);
     }else{
+      let erro = false
       axios
     .post(`http://127.0.0.1:8000/api/users/`, formData)
     .then((res) => {
         setSalvo(true);
-        console.log(formData)
         setTimeout(() => {
-          setSalvo(false); 
+          setSalvo(false); // Desativa o botão de carregamento
           toast({
-            variant: 'success',
+            variant: 'destructive',
             title: "Sucesso",
-            description: "Suas informações foram salvas com sucesso.",
+            description: "Suas informações foram salvas com sucesso",
           });
-          navigate('/login');
         }, 2000);
       })
       .catch((error) => {
         if (error.response.status == 500) {
+          erro = true
           setErroUsername(true);
-        }if(error.response.status == 400){
-          setErroPassword(true)
+        }else{
+          erro = false
+          setErroUsername(false)
         }
-      })    
-    }; 
+      })
+      .then((res) => {
+        if (erro !== true){
+            window.location.href = "/login"
+          }
+      })
+      
+      
+    };
+
+    
+
+    
   };
 
   return (
-    <div className="flex flex-row justify-center my-12 mx-24">
-      <div className="max-w-md w-full">
-      <form className="pb-12" onSubmit={saveData}>
+    <div className="px-96 my-12 mx-24">
+        <form className="pb-12" onSubmit={saveData}>
           <div className="flex flex-row justify-center">
             <h2 className="text-base font-semibold leading-7 text-gray-900">Informações Pessoais</h2>
           </div>
@@ -132,7 +148,6 @@ export function Register() {
               </label>
               <div className="mt-2">
                 <Input
-                  required={true}
                   value = {name}
                   onBlur={nameVal}
                   onChange= {nameChange}
@@ -156,7 +171,6 @@ export function Register() {
               </label>
               <div className="mt-2">
                 <Input
-                  required={true}
                   value={email}
                   onBlur={emailVal}
                   onChange={emailChange}
@@ -181,7 +195,6 @@ export function Register() {
               </label>
               <div className="mt-2">
                 <Input
-                required={true}
                 id="password"
                 name="password"
                 type="password"
@@ -196,9 +209,8 @@ export function Register() {
               </label>
               <div className="mt-2">
                 <Input
-                required={true}
-                id="passwordagain"
-                name="passwordagain"
+                id="password"
+                name="password"
                 type="password"
                 onBlur={passwordVal}
                 onChange={passwordAgainChange}
@@ -207,13 +219,18 @@ export function Register() {
               </div>
             </div>
             <div className="sm:col-span-6">
-              {erroPassword ? <AlertDestructive> A sua senha deve ter um tamanho mínimo de 8 caracteres.</AlertDestructive> : null}
-              {erroSenhas ? <AlertDestructive> As senhas não coincidem.</AlertDestructive> : null}
+                {erroSenhas ? <AlertDestructive> As senhas não coincidem.</AlertDestructive> : null}
             </div>
           </div>
-          {salvo ? <ButtonLoading/> : <ButtonDemo type = "submit" variante = "blue" input = "Salvar"/>}
+          {salvo ? <ButtonLoading/> : <ButtonDemo type = "submit" variante = "blue" input = "Salvar" disabled={errorGeral}/>}
         </form>
-      </div>
+        <p className="text-center text-sm text-gray-500">
+          <Link to = "/login" className="font-semibold leading-6 text-blue-500 hover:text-blue-500">
+            Return to login
+          </Link>
+        </p>
+  
+        
     </div>
   )
 }
