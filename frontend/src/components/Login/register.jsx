@@ -1,6 +1,5 @@
 import { Input } from "@/components/ui/input"
 import { useState, useEffect } from "react"
-import 'react-international-phone/style.css'
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
