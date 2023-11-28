@@ -82,7 +82,7 @@ const SpecPost = (props) => {
           <h1 className='font-mono font-black text-2xl md:text-5xl'>POST</h1>
         </div>
           <div className="flex flex-row justify-start grow mt-10 py-4 md:py-11 px-2.5 md:px-7 bg-blue-300 min-w-full max-w-screen-md">
-            <AvatarDemo tamanho = " rounded-full h-16 md:h-28 "></AvatarDemo>
+            <AvatarDemo tamanho = " h-16 md:h-28 rounded-full overflow-hidden border-2 border-white z-0 "></AvatarDemo>
             <div className='flex flex-col ml-4 md:ml-11 '>
               <div className='flex flex-row items-center mb-4 md:mb-7'>
                 <h1 className='mr-2.5 text-black font-bold text-2xl md:text-4xl'>{postComments.post.user?.username}</h1>
