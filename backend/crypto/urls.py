@@ -13,5 +13,6 @@ urlpatterns = [
     path('api/comments/user/', views.api_comment_user, name = 'api_comment_user'),
     path('api/comments/<int:id>/', views.api_comments),
     path('profile/delete/<int:id>/', views.api_delete_post),
-    path('api/post/<int:id>/', views.api_post_id)
+    path('api/post/<int:id>/', views.api_post_id),
+    path('profile/commments/delete/<int:id>/', views.api_comment_id),
 ]

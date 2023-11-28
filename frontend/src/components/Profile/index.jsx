@@ -4,6 +4,7 @@ import { AvatarDemo } from '../Options/avatar';
 import bannerImage from '../../assets/banner.png'
 import PostsProfile from './PostsProfile';
 import Sidebar from './Sidebar';
+import CommentsProfile from './CommentsProfile'
 
 
 
@@ -69,23 +70,24 @@ export function Profile() {
     const handleCommentClick = () =>{
         axios.get("http://127.0.0.1:8000/api/comments/user/",header)
             .then((res)=>{
+                console.log(res.data)
                 if(res.data.length===0){
                     setContent(<p className='flex font-bold mt-48 text-2xl items-center justify-center'>Você ainda não possui nenhum comentário :(</p>)
-                }else{const postContent = ((res.data)
+                }else{const commentContent = ((res.data)
                 .slice()
                 .reverse()
-                .map((post, index) => (
-                    
-                <PostsProfile
+                .map((comment, index) => (
+                
+                <CommentsProfile
                     key={index}
-                    user={post.user}
-                    content={post.content}
+                    user={comment.user}
+                    content={comment.content}
                     header = {header}
-                    postId = {post.id}
-                    getPosts = {getPosts}
-                ></PostsProfile>)
+                    commentId = {comment.id}
+                    getComments = {handleCommentClick}
+                ></CommentsProfile>)
                 ))
-                    setContent(postContent)}
+                setContent(commentContent)}
             })
     }
 

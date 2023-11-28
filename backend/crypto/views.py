@@ -163,6 +163,16 @@ def api_post_id(request,id):
     serialized_post = PostSerializer(post)
     return Response(serialized_post.data)
 
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def api_comment_id(request,id):
+    comment = Comment.objects.get(id = id)
+    
+    if request.method == 'DELETE':
+        comment.delete()
+
+    return Response({"message": "Comment deleted successfully"}, status=status.HTTP_200_OK)
+
     
 
 
