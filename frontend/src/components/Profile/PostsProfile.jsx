@@ -24,7 +24,7 @@ const PostsProfile = (props) => {
         <div className="flex flex-col mr-4 justify-start grow wrap mt-10 py-4 md:py-11 px-2.5 md:px-7 min-w-full max-w-screen-md rounded-xl border border-solid border-blue-300 border-1">
                 <Link className="flex flex-row
             " to = {`/community/${props.postId}`}>
-                <AvatarDemo tamanho = "rounded-full overflow-hidden h-10 md:h-16 min-w-fit max-w-max border-2 border-white z-0"></AvatarDemo>
+                <AvatarDemo tamanho = "rounded-full overflow-hidden h-10 md:h-16 border-2 border-white z-0"></AvatarDemo>
                 <div className = 'flex flex-col ml-2.5 md:ml-10 wrap'>
                     <div className = 'flex flex-row justify-between items-center mb-4'>
                         <div className='flex flex-row items-center'>
