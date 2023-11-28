@@ -11,7 +11,7 @@ import Coin from './components/Coin/Coin'
 import { Login } from './components/Login';
 import { Profile } from './components/Profile';
 import Community from './components/community/Community';
-import { Register } from './components/login/register';
+import { Register } from './components/Login/register';
 import { Toaster } from './components/ui/toaster';
 import SpecPost from './components/community/SpecPost'
 
