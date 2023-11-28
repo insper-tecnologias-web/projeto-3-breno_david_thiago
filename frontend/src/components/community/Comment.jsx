@@ -88,7 +88,7 @@ const Comment = (props) => {
     return (
         <div  className = "flex flex-col grow justify-center items-center  border-blue-300 border-2 rounded-xl bg-blue-100 mt-10 mx-0.5 md:mx-96 min-w-[75%] max-w-screen-md" onClick={(e) => e.stopPropagation()}>
             <div className="flex flex-row justify-start grow mt-10 py-4 md:py-11 px-2.5 md:px-7 min-w-full max-w-screen-md">
-                <AvatarDemo tamanho = ' rounded-full overflow-hidden z-0 h-14 md:h-28'></AvatarDemo>
+                <AvatarDemo tamanho = 'h-10 md:h-20 rounded-full'></AvatarDemo>
                 <div className='flex flex-col ml-4 md:ml-11'>
                     <div className='flex flex-row items-center mb-4'>
                         <h1 className='mr-2.5 text-black font-bold text-2xl md:text-4xl'>{selectedPost.user.username}</h1>
