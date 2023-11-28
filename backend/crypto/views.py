@@ -9,6 +9,8 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
 @api_view(['POST'])
@@ -33,7 +35,11 @@ def api_user(request):
         username = request.data['username']
         email = request.data['email']
         password = request.data['password']
-
+        try:
+            validate_password(password)
+        except ValidationError as e:
+            return Response({'password': e.messages}, status=status.HTTP_400_BAD_REQUEST)
+        
         user = User.objects.create_user(username, email, password)
         user.save()
         return Response(status=204)
@@ -107,6 +113,20 @@ def api_post_all(request):
     serialized_post = PostSerializer(post_all, many = True)
     return Response(serialized_post.data)
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def api_post_user(request):
+    post_user = Post.objects.filter(user=request.user)
+    serialized_post = PostSerializer(post_user, many = True)
+    return Response(serialized_post.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def api_comment_user(request):
+    comment_user = Comment.objects.filter(user=request.user)
+    serialized_comment = CommentSerializer(comment_user, many = True)
+    return Response(serialized_comment.data)
+
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def api_comments(request,id):
@@ -118,7 +138,31 @@ def api_comments(request,id):
 
     post_comments = Comment.objects.filter(post = post)
     serialized_comments = CommentSerializer(post_comments, many = True)
-    return Response(serialized_comments.data)
+    serialized_post = PostSerializer(post)
+    return Response([serialized_comments.data, serialized_post.data])
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def api_delete_post(request,id):
+    try:
+        post = Post.objects.get(id=id)
+    except Post.DoesNotExist:
+        return Response({"message": "Post not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'DELETE':
+        post.delete()
+
+    return Response({"message": "Post deleted successfully"}, status=status.HTTP_200_OK)
+    
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def api_post_id(request,id):
+    post = Post.objects.get(id = id)
+    serialized_post = PostSerializer(post)
+    return Response(serialized_post.data)
+
     
 
 

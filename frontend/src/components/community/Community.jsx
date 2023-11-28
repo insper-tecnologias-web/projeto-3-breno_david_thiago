@@ -2,8 +2,28 @@ import Timeline from "./Timeline";
 import Header from "../Header";
 import {useState, useEffect} from 'react';
 import axios from "axios";
+import Comment from "./Comment";
+import { useAsyncError } from "react-router-dom";
+import Posts from "./Posts";
 
 const Community = () => {
+    const [isFormVisible, setFormVisibility] = useState(false);
+    const [selectedPostId, setSelectedPostId] = useState(null);
+    
+
+    const toggleFormVisibility = () => {
+        setFormVisibility(!isFormVisible);
+        
+    }
+    
+
+    const selectPost = (postId) => {
+      
+      setSelectedPostId(postId);
+      
+    }
+
+    
     const [posts, setPosts] = useState([]);
     const getToken = () => {
         const tokenString = localStorage.getItem('token');
@@ -34,13 +54,32 @@ const Community = () => {
     useEffect(() => {
         getPosts();
     }); // Empty dependency array to run the effect only once on mount
-    return(
-        <div>
-            <Header></Header>
-            
-            <Timeline posts = {posts} header = {header}></Timeline>
-        </div>
+    return (
+        <div className="relative h-screen">
+          {/* Blurred content */}
+          <div onClick = {() => {setFormVisibility(false)}}>
+            <Header className="z-10"></Header>
+            <Timeline
+              posts={posts}
+              header={header}
+              toggleFunction={toggleFormVisibility}
+              selectPost = {selectPost}
+              visibility={isFormVisible}
+              className="z-5"
+            ></Timeline>
+          </div>
+      
+          {/* Comment component */}
         
-    )
+          {isFormVisible &&(
+            <div className="backdrop-blur fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none"
+            onClick={() => setFormVisibility(false)}>
+              <Comment className="justify-self-center" postId = {selectedPostId} header ={header}/>
+            </div>
+          )}
+        </div>
+      );
+      
+      
 }
 export default Community;

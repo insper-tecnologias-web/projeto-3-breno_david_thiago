@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import HeaderWatch from "../Watchlist/HeaderWatch";
+import Header from "../Header";
 
 
 
@@ -59,7 +59,7 @@ const Coin = (props) => {
     return(
         
         <div className = ' h-full w-max-screen-md w-min-screen-sm'>
-            <HeaderWatch/>
+            <Header/>
             <div className=' flex flex-row mx-14 grow justify-center flex-wrap mt-14 md:mt-20'>
                 <div className = 'flex grow max-w-screen-sm flex-col 2xl md:mx-48 '>
                     <div className = 'flex flex-row wrap items-center mb-7'>
