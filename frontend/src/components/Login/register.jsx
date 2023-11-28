@@ -135,7 +135,7 @@ export function Register() {
   };
 
   return (
-    <div className=" flex flex-col justify-center mx-4 my-4 md:my-14  max-w-screen-xs md:max-w-screen-md">
+    <div className=" flex flex-col justify-center mx-4 md:mx-auto my-4 md:my-14  max-w-screen-xs md:max-w-screen-md">
         <form className="pb-12" onSubmit={saveData}>
           <div className="flex flex-row justify-center">
             <h2 className="text-base font-semibold leading-7 text-gray-900">Informações Pessoais</h2>
