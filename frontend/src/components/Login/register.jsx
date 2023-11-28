@@ -28,7 +28,6 @@ export function Register() {
   const [erroSenhas, setErroSenhas] = useState(false);
   const [erroPassword, setErroPassword] = useState(false);  
 
-
   const nameChange = (event) =>{
     setName(event.target.value);
   };
