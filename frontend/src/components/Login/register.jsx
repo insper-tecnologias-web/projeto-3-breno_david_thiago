@@ -100,6 +100,7 @@ export function Register() {
         });
       }, 2000);
     }else{
+      let erro = false
       axios
     .post(`http://127.0.0.1:8000/api/users/`, formData)
     .then((res) => {
@@ -115,7 +116,11 @@ export function Register() {
       })
       .catch((error) => {
         if (error.response.status == 500) {
+          erro = true
           setErroUsername(true);
+        }else{
+          erro = false
+          setErroUsername(false)
         }
       })
       .then((res) => {
