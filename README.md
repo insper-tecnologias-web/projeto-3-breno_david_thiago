@@ -19,7 +19,7 @@ Sprint3:
 -
 ```
 <h1 align= "center">Diagrama do projeto:</h1>
-<img width="452" align= "center" alt="image" src="https://github.com/insper-tecnologias-web/projeto-3-breno_david_thiago/assets/69681254/290fdd03-bf22-4b28-a4ec-8f90611a21cf">
+<div  align= "center"><img width="452" alt="image" src="https://github.com/insper-tecnologias-web/projeto-3-breno_david_thiago/assets/69681254/290fdd03-bf22-4b28-a4ec-8f90611a21cf"></div>
 
 
 
