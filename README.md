@@ -23,7 +23,7 @@
 <div  align= "center"><img width="452" alt="image" src="https://github.com/insper-tecnologias-web/projeto-3-breno_david_thiago/assets/69681254/290fdd03-bf22-4b28-a4ec-8f90611a21cf"></div>
 
 <h1 align= "center">Link para o video demonstrando as funcionalidades:</h1>
-<a href= "https://www.youtube.com/watch?v=9sT5n1IyF8E">https://www.youtube.com/watch?v=9sT5n1IyF8E</a>
+<a align= "center" href= "https://www.youtube.com/watch?v=9sT5n1IyF8E">https://www.youtube.com/watch?v=9sT5n1IyF8E</a>
 
 <h1 align="center"> Crypto Oracle </h1>
 <h2>Aplicação que permite a visualização de dados do mercado de criptomoedas em tempo real, que permite o favoritamento das moedas, além da participação em uma comunidade voltada para discussão do mercado.</h2>
