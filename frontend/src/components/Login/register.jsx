@@ -8,14 +8,15 @@ import { ButtonDemo } from "@/components/Button/button";
 import { ButtonLoading } from "@/components/Button/loading";
 import { useToast } from "@/components/ui/use-toast"
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { useNavigate } from 'react-router-dom';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AlertDestructive } from '@/components/Error/error';
 library.add(faChevronDown, faChevronUp);
 
 
 export function Register() { 
 
+  const navigate = useNavigate();
   const { toast } = useToast()
   const params = useParams();
   const userId = params.userId;
@@ -29,8 +30,8 @@ export function Register() {
   const [passwordAgain,setPasswordAgain] = useState("");
   const [salvo, setSalvo] = useState(false);
   const [errorGeral, setErrorGeral] = useState(false);
-  const [erroSenhas, setErroSenhas] = useState(false); 
-  const {register, setValue, setFocus} = useForm();
+  const [erroSenhas, setErroSenhas] = useState(false);
+  const [erroPassword, setErroPassword] = useState(false); 
 
   const nameChange = (event) =>{
     setName(event.target.value);
@@ -68,6 +69,7 @@ export function Register() {
   }
 
   const passwordVal = () => {
+    setErroPassword(false)
     if (!(password === passwordAgain)){
       setErroSenhas(true)
   }
@@ -87,11 +89,11 @@ export function Register() {
       "email" : email,
     }
 
-    if(erroNome==true || erroEmail==true || erroSenhas){
+    if(erroNome || erroEmail || erroSenhas || erroPassword){
       console.log("erro ok")
       setTimeout(() => {
         toast({
-          variant: "red",
+          variant: "destructive",
           title: "Erro",
           description: "Resolva os erros antes de salvar",
         });
@@ -105,28 +107,20 @@ export function Register() {
         setTimeout(() => {
           setSalvo(false); // Desativa o botão de carregamento
           toast({
-            variant: 'destructive',
+            variant: 'success',
             title: "Sucesso",
             description: "Suas informações foram salvas com sucesso",
           });
+          navigate('/login');
         }, 2000);
       })
       .catch((error) => {
         if (error.response.status == 500) {
-          erro = true
           setErroUsername(true);
-        }else{
-          erro = false
-          setErroUsername(false)
+        }if(error.response.status == 400){
+          setErroPassword(true)
         }
-      })
-      .then((res) => {
-        if (erro !== true){
-            window.location.href = "/login"
-          }
-      })
-      
-      
+      }) 
     };
 
     
@@ -151,6 +145,7 @@ export function Register() {
                   value = {name}
                   onBlur={nameVal}
                   onChange= {nameChange}
+                  required={true}
                   type="text"
                   name="name"
                   id="name"
@@ -174,6 +169,7 @@ export function Register() {
                   value={email}
                   onBlur={emailVal}
                   onChange={emailChange}
+                  required={true}
                   id="email"
                   name="email"
                   type="email"
@@ -195,9 +191,9 @@ export function Register() {
               </label>
               <div className="mt-2">
                 <Input
-                id="password"
-                name="password"
-                type="password"
+                required={true}
+                id="passwordagain"
+                name="passwordagain"
                 onChange={passwordChange}
                 className="block w-full rounded-md px-3 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                 />
@@ -219,7 +215,8 @@ export function Register() {
               </div>
             </div>
             <div className="sm:col-span-6">
-                {erroSenhas ? <AlertDestructive> As senhas não coincidem.</AlertDestructive> : null}
+              {erroPassword ? <AlertDestructive> A sua senha deve ter um tamanho mínimo de 8 caracteres.</AlertDestructive> : null}
+              {erroSenhas ? <AlertDestructive> As senhas não coincidem.</AlertDestructive> : null}
             </div>
           </div>
           {salvo ? <ButtonLoading/> : <ButtonDemo type = "submit" variante = "blue" input = "Salvar" disabled={errorGeral}/>}
