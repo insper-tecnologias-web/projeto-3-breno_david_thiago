@@ -19,7 +19,7 @@ Sprint3:
 -
 ```
 <h1 align= "center">Diagrama do projeto:</h1>
-<img width="452" alt="image" src="https://github.com/insper-tecnologias-web/projeto-3-breno_david_thiago/assets/69681254/290fdd03-bf22-4b28-a4ec-8f90611a21cf">
+<img width="452" align= "center" alt="image" src="https://github.com/insper-tecnologias-web/projeto-3-breno_david_thiago/assets/69681254/290fdd03-bf22-4b28-a4ec-8f90611a21cf">
 
 
 
@@ -35,7 +35,7 @@ Sprint3:
   </p>-Render</p>
    </p>-Api externa utilizada: Coinraking, https://rapidapi.com/Coinranking/api/coinranking1/ </p>
    
-<h3>Funcionalidades implementadas:</h3
+<h2>Funcionalidades implementadas:</h2>
   <p>Autenticação de usuário, páginas de login/cadastro</p>                                
   <p>Visualização de dados do mercado de criptomoedas em tempo real, além dos dados das 50 maiores moedas em Market Cap, a partir de requisicão para api externa </p>
   <p>Ao clicar no nome, símbolo, ou ícone de uma moeda específica, a aplicação faz uma requisição diferente para a API externa, utilizando o parâmetro passado na rota do React, que consiste na uuid, ou chave única de cada moeda, devolvendo assim diversas informações específicas da moeda selecionada, em uma página específica dessa moeda/p>
