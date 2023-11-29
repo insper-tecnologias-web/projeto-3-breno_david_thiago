@@ -16,7 +16,7 @@ const Posts = (props) => {
         <div className="flex flex-col justify-start grow mt-10 mb-4 py-4 md:py-11 px-2.5 md:px-7 min-w-full max-w-screen-md rounded-xl border border-solid border-blue-300 border-1">
             <Link className="flex flex-row
             " to = {`/community/${props.postId}`}>
-                <AvatarDemo tamanho = "rounded-full h-10 md:h-16 min-w-fit max-w-max border-2 border-white "></AvatarDemo>
+                <AvatarDemo tamanho = ' h-10 md:h-20 md:min-w-fit rounded-full'></AvatarDemo>
                 <div className='flex flex-col ml-4 md:ml-11'>
                     <div className='flex flex-row items-center mb-4'>
                         <h1 className='mr-2.5 text-black font-bold text-xl md:text-3xl'>{props.user.username}</h1>
