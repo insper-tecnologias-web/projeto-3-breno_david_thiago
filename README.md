@@ -56,3 +56,4 @@
 </h3>
 <p>Back-end: https://cryptooracle-projeto-3.onrender.com</p>
 <p>Front-end: https://projeto-3-breno-david-thiago.vercel.app</p>
+<p>Obs: As vezes ao abrir o site pela primeira vez o deploy no vercel mostra um erro, mas ao recarregar a página, a aplicação funciona corretamente</p>
