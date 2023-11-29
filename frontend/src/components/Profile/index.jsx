@@ -83,7 +83,7 @@ export function Profile() {
                     user={comment.user}
                     content={comment.content}
                     header = {header}
-                    postId = {comment.post.id}
+                    postId = {comment.post}
                     commentId = {comment.id}
                     getComments = {handleCommentClick}
                 ></CommentsProfile>)
