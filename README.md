@@ -1,23 +1,24 @@
-```[tasklist]
-### ToDo
-Sprit1:
-  - [x] backend funcionando
-  - [x] frontend funcionando
-  - [x] implementar user no back
-  - [x] criar pagina de login
-  - [x] criar pagina de signup
-Sprint2:
-  - [x] criar timeline
-  - [x] criar funcionalidades de fazer posts
-  - [x] criar tela de perfil
-  - [x] criar comentarios
-Sprint3:
-  - [x] adicionar posts e comentários ao perfil, além das funcionalidades
-  - [x] adicionar funcionalidade de deletar posts/comentários feitos a partir da página de perfil
-  - [x] últimos ajustes estilização e funcionalidades
-  - [x] Deployar
--
-```
+## ToDo List
+
+### Sprint 1
+- [x] Backend funcionando
+- [x] Frontend funcionando
+- [x] Implementar usuário no backend
+- [x] Criar página de login
+- [x] Criar página de signup
+
+### Sprint 2
+- [x] Criar timeline
+- [x] Criar funcionalidades de fazer posts
+- [x] Criar tela de perfil
+- [x] Criar comentários
+
+### Sprint 3
+- [x] Adicionar posts e comentários ao perfil, além das funcionalidades
+- [x] Adicionar funcionalidade de deletar posts/comentários feitos a partir da página de perfil
+- [x] Últimos ajustes estilização e funcionalidades
+- [x] Deployar
+      
 <h1 align= "center">Diagrama do projeto:</h1>
 <div  align= "center"><img width="452" alt="image" src="https://github.com/insper-tecnologias-web/projeto-3-breno_david_thiago/assets/69681254/290fdd03-bf22-4b28-a4ec-8f90611a21cf"></div>
 
